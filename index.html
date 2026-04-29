@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinned — Peptide Tracking, Reimagined</title>
+  <meta name="description" content="Track doses, calculate reconstitution, manage your inventory, and get AI-powered guidance. The only peptide tracking app built for serious users.">
+  <meta property="og:title" content="Pinned — Peptide Tracking, Reimagined">
+  <meta property="og:description" content="Track doses, calculate reconstitution, and get AI-powered guidance built for serious peptide users.">
+  <meta property="og:image" content="https://pinned.fit/img/og.png">
+  <meta property="og:url" content="https://pinned.fit">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233D7BFF'/><path d='M8 16h6M18 10l6 6-6 6M14 16l4-6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #fff;
+      color: #0A0A0C;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --blue:     #3D7BFF;
+      --blue-dark:#2A5CE8;
+      --blue-soft:rgba(61,123,255,0.10);
+      --ink:      #0A0A0C;
+      --ink-2:    #3A3A40;
+      --muted:    #7A7A85;
+      --hairline: #E5E5E8;
+      --surface:  #F7F7F8;
+      --good:     #3DA17A;
+      --hero-bg:  #080818;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(8,8,24,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-wordmark {
+      font-size: 17px; font-weight: 800; letter-spacing: -0.04em; color: #fff;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px; border-radius: 999px;
+      background: var(--blue); color: #fff;
+      font-size: 14px; font-weight: 600; letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(61,123,255,0.40);
+      cursor: pointer; border: none;
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(61,123,255,0.50);
+    }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% -10%, rgba(61,123,255,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(91,77,255,0.12) 0%, transparent 50%),
+        var(--hero-bg);
+      display: flex; align-items: center;
+      padding: 120px 40px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(61,123,255,0.15); border: 1px solid rgba(61,123,255,0.30);
+      font-size: 12px; font-weight: 600; color: rgba(61,123,255,0.9);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 1.0;
+      color: #fff; margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #6FA3FF 0%, #A78BFF 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 18px; line-height: 1.65;
+      color: rgba(255,255,255,0.55); max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .store-buttons {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .store-btn {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 22px; border-radius: 14px;
+      background: #fff; color: var(--ink);
+      font-weight: 600; transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .store-btn-dark {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .store-btn-dark:hover { background: rgba(255,255,255,0.12); }
+    .store-btn-label { display: flex; flex-direction: column; }
+    .store-btn-top { font-size: 10px; font-weight: 500; opacity: 0.65; line-height: 1.2; letter-spacing: 0.02em; }
+    .store-btn-name { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+
+    /* Hero phone */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .hero-phone {
+      position: relative; width: 300px;
+      filter: drop-shadow(0 40px 80px rgba(61,123,255,0.25))
+              drop-shadow(0 0 1px rgba(255,255,255,0.15));
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+    }
+    .hero-phone img { width: 100%; border-radius: 44px; }
+
+    .hero-phone-glow {
+      position: absolute; inset: -40px;
+      background: radial-gradient(ellipse at center, rgba(61,123,255,0.20) 0%, transparent 70%);
+      pointer-events: none; z-index: -1;
+    }
+
+    /* ─── STATS BAR ───────────────────────────────────── */
+    .stats-bar {
+      background: #fff; border-bottom: 1px solid var(--hairline);
+      padding: 36px 40px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .stat {
+      text-align: center; padding: 0 16px;
+      border-right: 1px solid var(--hairline);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.04em; color: var(--ink);
+      margin-bottom: 4px; line-height: 1;
+    }
+    .stat-num span { color: var(--blue); }
+    .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+    /* ─── SECTION COMMON ──────────────────────────────── */
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      color: var(--blue); text-transform: uppercase; letter-spacing: 0.09em;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(32px, 3.5vw, 50px); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.1; color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--muted); line-height: 1.65;
+      max-width: 520px; margin-bottom: 60px;
+    }
+
+    /* ─── FEATURE GRID ────────────────────────────────── */
+    .features-section { background: var(--surface); }
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    @media (min-width: 900px) { .feature-grid { grid-template-columns: repeat(4, 1fr); } }
+    .feature-card {
+      background: #fff; border: 1px solid var(--hairline);
+      border-radius: 20px; padding: 28px 24px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+      border-color: rgba(61,123,255,0.20);
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; font-size: 22px;
+    }
+    .feature-title {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .feature-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── SHOWCASE SECTIONS ───────────────────────────── */
+    .showcase { background: #fff; }
+    .showcase-alt { background: #FAFAFA; }
+    .showcase-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .showcase-inner.reverse { direction: rtl; }
+    .showcase-inner.reverse > * { direction: ltr; }
+    .showcase-text { }
+    .showcase-title {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.1;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    .showcase-sub {
+      font-size: 16px; color: var(--muted); line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .showcase-bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .showcase-bullets li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14.5px; color: var(--ink-2); line-height: 1.5;
+    }
+    .check-icon {
+      flex-shrink: 0; width: 20px; height: 20px;
+      background: rgba(61,123,255,0.10); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .showcase-phone {
+      display: flex; justify-content: center;
+    }
+    .showcase-phone img {
+      width: 100%; max-width: 300px;
+      border-radius: 40px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+      transition: transform 0.3s;
+    }
+    .showcase-phone img:hover { transform: translateY(-6px); }
+
+    /* ─── AI COACH DARK ───────────────────────────────── */
+    .coach-section {
+      background: linear-gradient(160deg, #080818 0%, #0F0F2A 40%, #0D1830 100%);
+      padding: 100px 40px; overflow: hidden; position: relative;
+    }
+    .coach-section::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(61,123,255,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+    .coach-inner {
+      max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .coach-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(61,123,255,0.15); border: 1px solid rgba(61,123,255,0.30);
+      font-size: 11px; font-weight: 600; color: rgba(100,163,255,0.9);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .coach-title {
+      font-size: clamp(32px, 3.5vw, 48px); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.1; color: #fff;
+      margin-bottom: 16px;
+    }
+    .coach-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #6FA3FF 0%, #A78BFF 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .coach-sub {
+      font-size: 16px; color: rgba(255,255,255,0.50); line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .coach-features { display: flex; flex-direction: column; gap: 16px; }
+    .coach-feat {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px 18px; border-radius: 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    }
+    .coach-feat-icon {
+      width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+      background: rgba(61,123,255,0.15);
+    }
+    .coach-feat-title {
+      font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px;
+    }
+    .coach-feat-desc { font-size: 12.5px; color: rgba(255,255,255,0.40); line-height: 1.5; }
+
+    /* Coach mockup */
+    .coach-chat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 28px; padding: 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.40);
+    }
+    .coach-chat-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+      padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .coach-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, #3D7BFF, #9B6DFF);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #fff; font-weight: 700; flex-shrink: 0;
+    }
+    .coach-chat-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .coach-chat-status { font-size: 11px; color: rgba(61,161,122,0.9); font-weight: 500; }
+    .chat-bubble {
+      max-width: 85%; padding: 12px 16px; border-radius: 18px;
+      margin-bottom: 10px; font-size: 13px; line-height: 1.55;
+    }
+    .chat-bubble-user {
+      background: linear-gradient(135deg, #3D7BFF, #5B4DFF);
+      color: #fff; margin-left: auto; border-radius: 18px 18px 4px 18px;
+    }
+    .chat-bubble-ai {
+      background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 4px 18px 18px 18px;
+    }
+    .chat-bubble strong { color: #fff; font-weight: 700; }
+    .typing-dots { display: inline-flex; gap: 4px; align-items: center; padding: 2px 4px; }
+    .typing-dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      animation: typing 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-3px); }
+    }
+
+    /* ─── TRACKER SECTION ─────────────────────────────── */
+    .tracker-section { background: var(--surface); }
+    .tracker-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px;
+    }
+    .tracker-card {
+      background: #fff; border: 1px solid var(--hairline);
+      border-radius: 20px; padding: 28px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tracker-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+    }
+    .tracker-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 20px;
+    }
+    .tracker-card-title {
+      font-size: 17px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .tracker-card-sub { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* Progress bars inside tracker cards */
+    .mini-progress {
+      margin-top: 18px; height: 6px; background: var(--surface);
+      border-radius: 999px; overflow: hidden;
+    }
+    .mini-progress-fill {
+      height: 100%; border-radius: 999px;
+      transition: width 1s ease;
+    }
+
+    /* ─── DOWNLOAD CTA ────────────────────────────────── */
+    .download-section {
+      background: var(--ink);
+      padding: 100px 40px; text-align: center; position: relative; overflow: hidden;
+    }
+    .download-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(61,123,255,0.20) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .download-inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+    .download-badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      color: rgba(61,123,255,0.9); text-transform: uppercase; letter-spacing: 0.09em;
+      margin-bottom: 20px;
+    }
+    .download-title {
+      font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.05; color: #fff; margin-bottom: 16px;
+    }
+    .download-sub {
+      font-size: 17px; color: rgba(255,255,255,0.45); line-height: 1.65;
+      margin-bottom: 44px;
+    }
+    .download-buttons {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+    .store-btn-white {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 24px; border-radius: 16px;
+      background: #fff; color: var(--ink); font-weight: 600;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .store-btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    .store-btn-outline {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 24px; border-radius: 16px;
+      background: transparent; color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.20); font-weight: 600;
+      transition: transform 0.15s, background 0.2s, border-color 0.2s;
+    }
+    .store-btn-outline:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: #050510; border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 40px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-wordmark { font-size: 16px; font-weight: 800; letter-spacing: -0.04em; color: #fff; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+    /* ─── DISCLAIMER STRIP ────────────────────────────── */
+    .disclaimer-strip {
+      background: rgba(245,176,66,0.08); border-top: 1px solid rgba(245,176,66,0.15);
+      padding: 14px 40px;
+      font-size: 12px; color: rgba(255,255,255,0.30); text-align: center; line-height: 1.6;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-badge { justify-content: center; display: inline-flex; }
+      .hero-sub { margin: 0 auto 36px; }
+      .store-buttons { justify-content: center; }
+      .hero-phone { width: 240px; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat { border-right: none; border-bottom: 1px solid var(--hairline); padding-bottom: 24px; }
+      .stat:nth-child(even) { border-bottom: none; }
+      section { padding: 64px 24px; }
+      .showcase-inner { grid-template-columns: 1fr; gap: 48px; }
+      .showcase-inner.reverse { direction: ltr; }
+      .showcase-phone { order: -1; }
+      .coach-inner { grid-template-columns: 1fr; gap: 48px; }
+      .tracker-grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; text-align: center; align-items: center; padding: 32px 24px; }
+      .download-section { padding: 72px 24px; }
+      .disclaimer-strip { padding: 14px 24px; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────── -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <!-- Pinned logo SVG -->
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="#3D7BFF"/>
+        <path d="M7 14h5M20 9l-4 5 4 5M12 14l3.5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="nav-wordmark">pinned</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#coach">AI Coach</a></li>
+      <li><a href="#download">Download</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#download" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download App
+      </a>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Now Available on iOS &amp; Android
+        </div>
+        <h1>Your peptide stack,<br><em>perfectly managed.</em></h1>
+        <p class="hero-sub">
+          Track every dose, calculate reconstitution down to the unit mark, manage your vials, and get AI-powered guidance — all in one beautifully simple app.
+        </p>
+        <div class="store-buttons">
+          <!-- Apple App Store -->
+          <a href="#download" class="store-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M17.05 12.536c-.02-2.418 1.977-3.581 2.068-3.64-1.13-1.65-2.883-1.876-3.503-1.9-1.485-.15-2.906.876-3.66.876-.766 0-1.942-.855-3.195-.832C7.11 7.065 5.509 8.004 4.634 9.497c-1.776 3.044-.455 7.56 1.27 10.032.847 1.21 1.854 2.566 3.17 2.516 1.277-.05 1.757-.817 3.3-.817 1.53 0 1.97.817 3.31.793 1.37-.023 2.24-1.228 3.075-2.445.977-1.4 1.376-2.764 1.397-2.834-.03-.013-2.674-1.024-2.697-4.206z" fill="#0A0A0C"/>
+              <path d="M14.68 5.36c.697-.86 1.17-2.04 1.038-3.22-1.007.042-2.24.677-2.964 1.52-.645.75-1.212 1.968-1.06 3.123 1.124.086 2.277-.568 2.986-1.424z" fill="#0A0A0C"/>
+            </svg>
+            <div class="store-btn-label">
+              <span class="store-btn-top">Download on the</span>
+              <span class="store-btn-name">App Store</span>
+            </div>
+          </a>
+          <!-- Google Play -->
+          <a href="#download" class="store-btn store-btn-dark">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M3 2.5L12.5 11 3 19.5V2.5Z" fill="#34A853"/>
+              <path d="M3 2.5l12 5.5-2.5 2.5L3 2.5Z" fill="#EA4335"/>
+              <path d="M3 19.5l9.5-9.5L15 12.5 3 19.5Z" fill="#FBBC04"/>
+              <path d="M12.5 11 19 8l2 3-8.5 5L15 12.5l-2.5-1.5Z" fill="#4285F4"/>
+            </svg>
+            <div class="store-btn-label">
+              <span class="store-btn-top" style="color:rgba(255,255,255,0.5)">Get it on</span>
+              <span class="store-btn-name">Google Play</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-phone">
+          <div class="hero-phone-glow"></div>
+          <img src="img/today.png" alt="Pinned Today Screen — dose countdown and protocol card">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS BAR ─────────────────────────────────────── -->
+  <div class="stats-bar reveal">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">Peptides in the library</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">28<span>d</span></div>
+        <div class="stat-label">Stability tracking per vial</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100<span>u</span></div>
+        <div class="stat-label">U-100 syringe precision</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0<span>¢</span></div>
+        <div class="stat-label">No subscription required</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FEATURES ─────────────────────────────────────── -->
+  <section class="features-section" id="features">
+    <div class="section-inner">
+      <span class="section-badge reveal">Everything you need</span>
+      <h2 class="section-title reveal">Built for the serious<br>peptide user.</h2>
+      <p class="section-sub reveal">Every feature designed around real workflows — from first reconstitution to tracking a year of protocols.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon" style="background:rgba(61,123,255,0.10);">📅</div>
+          <div class="feature-title">Today Dashboard</div>
+          <div class="feature-desc">Your active protocol front and center. See exactly when to dose, log with one tap, and track your streak.</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon" style="background:rgba(61,161,122,0.10);">🧮</div>
+          <div class="feature-title">Smart Calculator</div>
+          <div class="feature-desc">Forward and reverse reconstitution math. Stack/Blend mode for multi-peptide protocols. Syringe unit marks shown automatically.</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon" style="background:rgba(155,109,255,0.10);">📚</div>
+          <div class="feature-title">Peptide Library</div>
+          <div class="feature-desc">50+ peptides with mechanisms, dosing ranges, half-lives, timing guides, and risk profiles. Plus pre-built synergistic stacks.</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-4">
+          <div class="feature-icon" style="background:rgba(245,176,66,0.10);">🤖</div>
+          <div class="feature-title">AI Coach</div>
+          <div class="feature-desc">Personalized guidance powered by Claude. Knows your protocols, history, and inventory. Ask anything about your stack.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE 1: TODAY ──────────────────────────────── -->
+  <section class="showcase" id="today">
+    <div class="showcase-inner section-inner">
+      <div class="showcase-text reveal">
+        <span class="section-badge">Today Screen</span>
+        <h2 class="showcase-title">Your daily command center.</h2>
+        <p class="showcase-sub">
+          Know exactly what to dose, how much, and where — the moment you open the app. No hunting through notes or spreadsheets.
+        </p>
+        <ul class="showcase-bullets">
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Real-time countdown to your next dose
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            One-tap logging with injection site rotation
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Full multi-peptide stack support — log all at once
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Streak counter and adherence tracking built in
+          </li>
+        </ul>
+      </div>
+      <div class="showcase-phone reveal reveal-delay-2">
+        <img src="img/today.png" alt="Pinned Today Screen">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE 2: CALCULATOR ────────────────────────── -->
+  <section class="showcase-alt" id="calculator">
+    <div class="showcase-inner section-inner reverse">
+      <div class="showcase-text reveal">
+        <span class="section-badge">Calculator</span>
+        <h2 class="showcase-title">Reconstitution, done right.</h2>
+        <p class="showcase-sub">
+          Stop guessing how much BAC water to add or where to draw on your syringe. Pinned does the math precisely — for single peptides or full stacks.
+        </p>
+        <ul class="showcase-bullets">
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Forward mode: enter dose, get exact syringe units
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Reverse mode: find the optimal BAC water volume
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Stack/Blend mode for multi-peptide protocols
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Guided first-mix walkthrough with sterile technique
+          </li>
+        </ul>
+      </div>
+      <div class="showcase-phone reveal reveal-delay-2">
+        <img src="img/calc.png" alt="Pinned Calculator Screen">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE 3: LIBRARY ───────────────────────────── -->
+  <section class="showcase" id="library">
+    <div class="showcase-inner section-inner">
+      <div class="showcase-text reveal">
+        <span class="section-badge">Peptide Library</span>
+        <h2 class="showcase-title">Every peptide.<br>Every protocol.</h2>
+        <p class="showcase-sub">
+          A comprehensive reference built into the app. From mechanism of action to cycling advice — plus curated multi-peptide stacks matched to your goals.
+        </p>
+        <ul class="showcase-bullets">
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            50+ peptides with full research summaries
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Pre-built stacks: Wolverine, Titan, Cortex, and more
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Filter by category: Recovery, Cognitive, Sleep, GI, and more
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#3D7BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            One tap to load any stack into the Calculator
+          </li>
+        </ul>
+      </div>
+      <div class="showcase-phone reveal reveal-delay-2">
+        <img src="img/library.png" alt="Pinned Library Screen" style="border-radius:32px;box-shadow:0 32px 80px rgba(0,0,0,0.30);">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── AI COACH ──────────────────────────────────────── -->
+  <div class="coach-section" id="coach">
+    <div class="coach-inner">
+      <div class="reveal">
+        <div class="coach-badge">✦ AI-Powered</div>
+        <h2 class="coach-title">Meet your<br><em>Pinned Coach.</em></h2>
+        <p class="coach-sub">
+          Powered by Claude, your AI Coach knows your exact protocols, dose history, and vials. It's not generic advice — it's guidance built around what you're actually running.
+        </p>
+        <div class="coach-features">
+          <div class="coach-feat">
+            <div class="coach-feat-icon">🎯</div>
+            <div>
+              <div class="coach-feat-title">Knows your stack</div>
+              <div class="coach-feat-desc">References your actual protocols, doses, and history in every answer — not generic information.</div>
+            </div>
+          </div>
+          <div class="coach-feat">
+            <div class="coach-feat-icon">🔬</div>
+            <div>
+              <div class="coach-feat-title">Research-backed</div>
+              <div class="coach-feat-desc">Mechanisms, synergies, cycling strategies, and timing — all grounded in the latest peptide research.</div>
+            </div>
+          </div>
+          <div class="coach-feat">
+            <div class="coach-feat-icon">⚡</div>
+            <div>
+              <div class="coach-feat-title">Always available</div>
+              <div class="coach-feat-desc">Ask about timing, reconstitution, interactions, or side effects — any time, instantly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat mockup -->
+      <div class="coach-chat reveal reveal-delay-2">
+        <div class="coach-chat-header">
+          <div class="coach-avatar">✦</div>
+          <div>
+            <div class="coach-chat-name">Pinned Coach</div>
+            <div class="coach-chat-status">● Online · knows your stack</div>
+          </div>
+        </div>
+
+        <div class="chat-bubble chat-bubble-user">
+          How should I time my BPC-157 and Ipamorelin today?
+        </div>
+
+        <div class="chat-bubble chat-bubble-ai">
+          Good question — these two actually complement each other nicely. Based on your Wolverine stack:<br><br>
+          <strong>BPC-157 (250 mcg)</strong> — flexible timing, morning SubQ near your target area works well. No fasting required.<br><br>
+          <strong>Ipamorelin (300 mcg)</strong> — take this pre-bed, ideally 90 minutes after your last meal. This maximises the GH pulse during your first sleep cycle.
+        </div>
+
+        <div class="chat-bubble chat-bubble-user">
+          Can I add TB-500 to this?
+        </div>
+
+        <div style="display:flex; gap:8px; align-items:center; margin-left: 4px; margin-top: 4px;">
+          <div class="coach-avatar" style="width:26px;height:26px;font-size:10px;">✦</div>
+          <div class="chat-bubble chat-bubble-ai" style="margin-bottom:0;">
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TRACKER / INVENTORY ───────────────────────────── -->
+  <section class="tracker-section" id="tracker">
+    <div class="section-inner">
+      <span class="section-badge reveal">Tracker &amp; Inventory</span>
+      <h2 class="section-title reveal">Complete visibility<br>into your protocol.</h2>
+      <p class="section-sub reveal">Every dose logged. Every vial tracked. Stability countdowns, adherence percentages, and streak history — all in one place.</p>
+
+      <div class="tracker-grid">
+        <div class="tracker-card reveal reveal-delay-1">
+          <div class="tracker-card-icon" style="background:rgba(61,123,255,0.10);">📊</div>
+          <div class="tracker-card-title">Dose History</div>
+          <div class="tracker-card-sub">Every injection logged with time, site, and peptide. Grouped by day for easy review.</div>
+          <div class="mini-progress">
+            <div class="mini-progress-fill" style="width:82%;background:var(--blue);"></div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;font-weight:600;">82% adherence · 14-day streak</div>
+        </div>
+        <div class="tracker-card reveal reveal-delay-2">
+          <div class="tracker-card-icon" style="background:rgba(61,161,122,0.10);">🧪</div>
+          <div class="tracker-card-title">Vial Inventory</div>
+          <div class="tracker-card-sub">Stability countdown per vial (28-day window), doses remaining, and color-coded status indicators.</div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:12px;font-weight:600;color:var(--ink);">BPC-157</span>
+              <span style="font-size:11px;background:rgba(61,161,122,0.10);color:#3DA17A;font-weight:600;padding:2px 8px;border-radius:999px;">Stable · 18d left</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:12px;font-weight:600;color:var(--ink);">TB-500</span>
+              <span style="font-size:11px;background:rgba(245,176,66,0.10);color:#D4973A;font-weight:600;padding:2px 8px;border-radius:999px;">Use soon · 6d left</span>
+            </div>
+          </div>
+        </div>
+        <div class="tracker-card reveal reveal-delay-3">
+          <div class="tracker-card-icon" style="background:rgba(245,176,66,0.10);">🔥</div>
+          <div class="tracker-card-title">Streak &amp; Adherence</div>
+          <div class="tracker-card-sub">Daily streak counter with detailed stats. Get push reminders before your streak breaks at 7:30 PM.</div>
+          <div style="margin-top:18px;text-align:center;">
+            <div style="font-size:52px;font-weight:900;letter-spacing:-0.04em;color:var(--ink);line-height:1;">14</div>
+            <div style="font-size:13px;color:var(--muted);font-weight:500;">day streak 🔥</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DOWNLOAD CTA ──────────────────────────────────── -->
+  <section class="download-section" id="download">
+    <div class="download-inner">
+      <div class="download-badge reveal">Free Download</div>
+      <h2 class="download-title reveal">Start tracking<br>today.</h2>
+      <p class="download-sub reveal">Available on iPhone and Android. Set up your first protocol in under 2 minutes.</p>
+      <div class="download-buttons reveal reveal-delay-2">
+        <!-- App Store -->
+        <a href="#" class="store-btn-white">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M20.23 15.31c-.02-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.46-2.25-4.2-2.28-1.78-.18-3.49 1.05-4.39 1.05-.92 0-2.33-1.03-3.84-.99-1.97.03-3.79 1.14-4.8 2.9-2.13 3.65-.54 9.07 1.52 12.04 1.02 1.45 2.23 3.08 3.8 3.02 1.53-.06 2.11-.98 3.96-.98 1.84 0 2.36.98 3.97.95 1.64-.03 2.69-1.47 3.69-2.93 1.17-1.68 1.65-3.32 1.68-3.4-.04-.02-3.21-1.23-3.24-5.04z" fill="#0A0A0C"/>
+            <path d="M17.22 6.5c.84-1.03 1.4-2.45 1.25-3.87-1.21.05-2.69.81-3.56 1.83-.77.9-1.45 2.36-1.27 3.75 1.35.1 2.73-.68 3.58-1.71z" fill="#0A0A0C"/>
+          </svg>
+          <div class="store-btn-label">
+            <span class="store-btn-top" style="color:var(--muted);">Download on the</span>
+            <span class="store-btn-name" style="font-size:18px;">App Store</span>
+          </div>
+        </a>
+
+        <!-- Google Play -->
+        <a href="#" class="store-btn-outline">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path d="M3.5 3L15 13 3.5 23V3Z" fill="#34A853"/>
+            <path d="M3.5 3l14 6.4L14.6 12 3.5 3Z" fill="#EA4335"/>
+            <path d="M3.5 23L15 13l2.9 2.6L3.5 23Z" fill="#FBBC04"/>
+            <path d="M15 13l7.8-3.6 2.4 3.6-10.2 6L17.9 15.6 15 13Z" fill="#4285F4"/>
+          </svg>
+          <div class="store-btn-label">
+            <span class="store-btn-top" style="color:rgba(255,255,255,0.5);">Get it on</span>
+            <span class="store-btn-name" style="font-size:18px;">Google Play</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">
+      <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="#3D7BFF"/>
+        <path d="M7 14h5M20 9l-4 5 4 5M12 14l3.5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="footer-wordmark">pinned</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="mailto:hello@pinned.fit">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Pinned. All rights reserved.</div>
+  </footer>
+
+  <!-- ─── DISCLAIMER ────────────────────────────────────── -->
+  <div class="disclaimer-strip">
+    Pinned is a personal tracking tool. Nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide.
+  </div>
+
+  <!-- ─── SCROLL ANIMATIONS JS ──────────────────────────── -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
