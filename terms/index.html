@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Pinned</title>
+<meta name="description" content="The terms that govern your use of Pinned.">
+<meta property="og:title" content="Pinned — Terms of Service">
+<meta property="og:url" content="https://pinned.fit/terms">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 24'><path d='M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z' fill='%230A0A0C'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&family=Instrument+Serif:ital@0;1&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "SF Pro Text", sans-serif;
+    background: #FFFFFF; color: #0A0A0C;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: #3D7BFF; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: #2A5CE8; }
+  :root {
+    --blue: #3D7BFF; --purple: #7C5CFF;
+    --ink: #0A0A0C; --ink-2: #2A2A30; --muted: #6B6B75;
+    --hairline: #ECECEF;
+    --serif: 'Instrument Serif', Georgia, serif;
+  }
+  nav {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 100; height: 56px; gap: 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 8px 0 22px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(10,10,12,0.06);
+    border-radius: 999px;
+    box-shadow: 0 2px 24px -8px rgba(15,15,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
+    width: calc(100% - 32px); max-width: 880px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 9px; flex-shrink: 0; text-decoration: none; color: inherit; }
+  .nav-glyph { width: 14px; height: 24px; flex-shrink: 0; }
+  .nav-wordmark {
+    font-family: 'Archivo', 'Inter', sans-serif;
+    font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
+    color: var(--ink); text-transform: lowercase; line-height: 1;
+  }
+  .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; padding: 0; margin: 0; }
+  .nav-links a {
+    padding: 8px 12px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 600; color: var(--muted);
+    text-decoration: none; transition: color 0.15s, background 0.15s; white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--ink); background: rgba(10,10,12,0.05); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 999px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+    transition: transform 0.12s; cursor: pointer; border: none; white-space: nowrap;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 16px -6px rgba(0,0,0,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: #1a1a22; color: #fff; }
+  @media (max-width: 720px) { nav { padding: 0 8px 0 18px; gap: 8px; } .nav-links a { padding: 7px 10px; font-size: 12.5px; } .nav-wordmark { font-size: 17px; } }
+  @media (max-width: 520px) { .nav-links { display: none; } }
+
+  .hero {
+    position: relative; padding: 130px 28px 30px; text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 60% at 80% 0%, rgba(124,92,255,0.16) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block; padding: 5px 12px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--hairline);
+    font-size: 12px; font-weight: 700; color: var(--ink-2);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 88px); font-weight: 900;
+    letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .hero p.meta { font-size: 14px; color: var(--muted); font-weight: 500; }
+
+  .doc { max-width: 760px; margin: 0 auto; padding: 40px 24px 60px; }
+  .doc section { margin-bottom: 32px; }
+  .doc h2 {
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .doc p {
+    font-size: 15.5px; line-height: 1.7; color: var(--ink-2);
+    margin-bottom: 12px;
+  }
+  .doc p:last-child { margin-bottom: 0; }
+  .doc strong { color: var(--ink); font-weight: 700; }
+
+  footer {
+    background: #0A0A0C; color: rgba(255,255,255,0.55);
+    padding: 48px 32px 28px; font-size: 13px;
+  }
+  .foot-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .foot-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+  .foot-brand .nav-glyph path { fill: #fff; }
+  .foot-brand .nav-wordmark { color: #fff; }
+  .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .foot-links a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .foot-links a:hover { color: #fff; }
+  .foot-disclaimer {
+    max-width: 1180px; margin: 24px auto 0; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    font-size: 11.5px; color: rgba(255,255,255,0.40); line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+      <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#0A0A0C"/>
+    </svg>
+    <span class="nav-wordmark">pinned</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/howitworks">How it works</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+  <a href="/" class="btn-primary">Get it</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Legal</div>
+    <h1>Terms of<br><em>Service.</em></h1>
+    <p class="meta">Last updated: May 2026</p>
+  </div>
+</section>
+
+<article class="doc">
+
+  <section>
+    <h2>Welcome</h2>
+    <p>These terms cover your use of Pinned — the app at pinned-tau.vercel.app, the website at pinned.fit, and the mobile apps wrapping them. By using Pinned you agree to these terms. If you don't, please don't use the app.</p>
+  </section>
+
+  <section>
+    <h2>Not medical advice</h2>
+    <p>Pinned is an educational tracking tool. Nothing in the app, the AI Coach, the Library, the Stack Optimizer, or the website is medical advice, diagnosis, or treatment.</p>
+    <p>Peptides are research compounds. Their safety, purity, and legality vary by jurisdiction. You are responsible for verifying legality in your region and consulting a qualified healthcare professional before starting, stopping, or changing any protocol.</p>
+    <p>Pinned, its operators, and its contributors are not liable for outcomes resulting from your use of peptides or your use of the app.</p>
+  </section>
+
+  <section>
+    <h2>Your account</h2>
+    <p>You can use much of Pinned without an account. To save your stack, sync across devices, or chat with Coach, you create an account with an email and password (or Google / Apple sign-in).</p>
+    <p>Keep your credentials secure. You're responsible for activity that happens under your account.</p>
+    <p>You must be 18 or older to create a Pinned account.</p>
+  </section>
+
+  <section>
+    <h2>Pinned Pro subscription</h2>
+    <p>Pinned Pro is offered at $5.99/week (with a 3-day free trial), $14.99/month, or $59.99/year. Prices may change; we'll give 30 days' notice before any change affects existing subscribers.</p>
+    <p><strong>Trials:</strong> if you sign up for the 3-day free trial, you're charged when the trial ends unless you cancel before then.</p>
+    <p><strong>Auto-renewal:</strong> subscriptions renew automatically at the end of each billing period unless cancelled.</p>
+    <p><strong>Cancellation:</strong> cancel in your profile (web) or in the App Store / Play Store (mobile). You keep Pro access through the end of the period you've already paid for.</p>
+    <p><strong>Refunds:</strong> if you're charged and Pinned isn't working for you, email <a href="mailto:hello@pinned.fit">hello@pinned.fit</a> within 14 days and we'll refund you.</p>
+  </section>
+
+  <section>
+    <h2>Acceptable use</h2>
+    <p>Don't reverse engineer, scrape, or attempt to disrupt the service.</p>
+    <p>Don't use Pinned to facilitate harm to yourself or others, or to circumvent any law.</p>
+    <p>Don't share your account or sublicense access.</p>
+    <p>Don't upload content you don't have the right to share.</p>
+    <p>We reserve the right to suspend accounts that violate these rules.</p>
+  </section>
+
+  <section>
+    <h2>Your content</h2>
+    <p>Everything you log into Pinned — your stack, doses, vials, schedules, Coach conversations — remains yours. We only use it to run the app for you, as described in the <a href="/privacy">Privacy Policy</a>.</p>
+    <p>You grant Pinned a limited license to host, store, and display your content within the app, for as long as your account exists. This license ends when you delete your data.</p>
+  </section>
+
+  <section>
+    <h2>AI Coach</h2>
+    <p>Coach is powered by Anthropic's Claude. Its responses are educational, not diagnostic, and may occasionally be inaccurate. Always verify with primary sources.</p>
+    <p>Coach has a free tier limit (5 messages); Pinned Pro unlocks unlimited messaging. Abuse of the Coach service (automated scripting, prompt injection attempts) may result in throttling or account suspension.</p>
+  </section>
+
+  <section>
+    <h2>Third-party services</h2>
+    <p>Pinned uses Supabase for account storage, Anthropic for the Coach AI, and Stripe / Apple / Google for payments. Their terms govern their portion of the service.</p>
+    <p>Vendor grades shown in the Vial Scanner are aggregated from public lab data (Finnrick, Janoshik, PeptideScores) and are educational only — not endorsements or warranties of any specific vendor.</p>
+  </section>
+
+  <section>
+    <h2>Service availability</h2>
+    <p>We aim for high uptime but don't guarantee it. The app may be temporarily unavailable for maintenance or updates. We're not liable for losses caused by downtime.</p>
+  </section>
+
+  <section>
+    <h2>Limitation of liability</h2>
+    <p>To the maximum extent permitted by law, Pinned is provided "as is" without warranties of any kind. Pinned is not liable for indirect, incidental, consequential, or punitive damages arising from your use of the app or peptides you track in it.</p>
+    <p>Our total liability to you for any claim related to Pinned is limited to the amount you paid us in the 12 months before the claim arose.</p>
+  </section>
+
+  <section>
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of the jurisdiction in which Pinned is operated. Any dispute will be resolved in those courts.</p>
+  </section>
+
+  <section>
+    <h2>Changes</h2>
+    <p>We may update these terms. Material changes get a notice in the app and an email to your account address. Continued use after a change means you accept the new terms.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions: <a href="mailto:hello@pinned.fit">hello@pinned.fit</a>.</p>
+  </section>
+
+</article>
+
+<footer>
+  <div class="foot-inner">
+    <a href="/" class="foot-brand">
+      <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+        <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#fff"/>
+      </svg>
+      <span class="nav-wordmark">pinned</span>
+    </a>
+    <div class="foot-links">
+      <a href="/howitworks">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/faq">FAQ</a>
+      <a href="mailto:hello@pinned.fit">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+  <div class="foot-disclaimer">
+    Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide. © 2026 Pinned.
+  </div>
+</footer>
+
+</body>
+</html>

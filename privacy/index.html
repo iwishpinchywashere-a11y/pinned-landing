@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Pinned</title>
+<meta name="description" content="How Pinned collects, uses, and protects your data.">
+<meta property="og:title" content="Pinned — Privacy Policy">
+<meta property="og:url" content="https://pinned.fit/privacy">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 24'><path d='M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z' fill='%230A0A0C'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&family=Instrument+Serif:ital@0;1&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "SF Pro Text", sans-serif;
+    background: #FFFFFF; color: #0A0A0C;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: #3D7BFF; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: #2A5CE8; }
+  :root {
+    --blue: #3D7BFF; --purple: #7C5CFF;
+    --ink: #0A0A0C; --ink-2: #2A2A30; --muted: #6B6B75;
+    --hairline: #ECECEF;
+    --serif: 'Instrument Serif', Georgia, serif;
+  }
+  /* nav */
+  nav {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 100; height: 56px; gap: 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 8px 0 22px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(10,10,12,0.06);
+    border-radius: 999px;
+    box-shadow: 0 2px 24px -8px rgba(15,15,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
+    width: calc(100% - 32px); max-width: 880px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 9px; flex-shrink: 0; text-decoration: none; color: inherit; }
+  .nav-glyph { width: 14px; height: 24px; flex-shrink: 0; }
+  .nav-wordmark {
+    font-family: 'Archivo', 'Inter', sans-serif;
+    font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
+    color: var(--ink); text-transform: lowercase; line-height: 1;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 6px;
+    list-style: none; padding: 0; margin: 0;
+  }
+  .nav-links a {
+    padding: 8px 12px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 600; color: var(--muted);
+    text-decoration: none; transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--ink); background: rgba(10,10,12,0.05); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 999px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+    transition: transform 0.12s; cursor: pointer; border: none; white-space: nowrap;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 16px -6px rgba(0,0,0,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: #1a1a22; color: #fff; }
+  @media (max-width: 720px) { nav { padding: 0 8px 0 18px; gap: 8px; } .nav-links a { padding: 7px 10px; font-size: 12.5px; } .nav-wordmark { font-size: 17px; } }
+  @media (max-width: 520px) { .nav-links { display: none; } }
+
+  /* hero */
+  .hero {
+    position: relative; padding: 130px 28px 30px; text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.16) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block; padding: 5px 12px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--hairline);
+    font-size: 12px; font-weight: 700; color: var(--ink-2);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 88px); font-weight: 900;
+    letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .hero p.meta {
+    font-size: 14px; color: var(--muted); font-weight: 500;
+  }
+
+  /* body */
+  .doc {
+    max-width: 760px; margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  .doc section { margin-bottom: 32px; }
+  .doc h2 {
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .doc p {
+    font-size: 15.5px; line-height: 1.7; color: var(--ink-2);
+    margin-bottom: 12px;
+  }
+  .doc p:last-child { margin-bottom: 0; }
+  .doc strong { color: var(--ink); font-weight: 700; }
+
+  /* footer */
+  footer {
+    background: #0A0A0C; color: rgba(255,255,255,0.55);
+    padding: 48px 32px 28px; font-size: 13px;
+  }
+  .foot-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .foot-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+  .foot-brand .nav-glyph path { fill: #fff; }
+  .foot-brand .nav-wordmark { color: #fff; }
+  .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .foot-links a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .foot-links a:hover { color: #fff; }
+  .foot-disclaimer {
+    max-width: 1180px; margin: 24px auto 0; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    font-size: 11.5px; color: rgba(255,255,255,0.40); line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+      <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#0A0A0C"/>
+    </svg>
+    <span class="nav-wordmark">pinned</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/howitworks">How it works</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+  <a href="/" class="btn-primary">Get it</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Legal</div>
+    <h1>Privacy<br><em>Policy.</em></h1>
+    <p class="meta">Last updated: May 2026</p>
+  </div>
+</section>
+
+<article class="doc">
+
+  <section>
+    <h2>The short version</h2>
+    <p>Pinned is a tracking tool you control. We collect the bare minimum to make the app work and keep your account secure. Your stack, doses, and vial data live on your device first. Anything synced to our servers is encrypted in transit and at rest.</p>
+    <p>We don't sell your data. We don't run ads. We don't share what you log with anyone outside of Pinned.</p>
+  </section>
+
+  <section>
+    <h2>What we collect</h2>
+    <p><strong>Account info:</strong> your email address and password hash (handled by Supabase Auth — we never see your raw password).</p>
+    <p><strong>Profile info:</strong> anything you optionally type into Profile — name, age, sex, height, weight, goals. All optional. Stored encrypted on our servers.</p>
+    <p><strong>Tracking data:</strong> peptides, doses, vials, schedules, and dose history you save. Stored locally first and synced to our servers when you're logged in.</p>
+    <p><strong>Coach conversations:</strong> the text of messages you send to Coach and the responses, so the chat persists across sessions. Sent to Anthropic's API for processing.</p>
+    <p><strong>Payment info:</strong> handled by Stripe (web) or Apple/Google (mobile). We see your subscription status; we never see your card details.</p>
+    <p><strong>Crash + usage logs:</strong> basic diagnostics (app version, device type, error stack traces) to keep the app stable. No personal data attached.</p>
+  </section>
+
+  <section>
+    <h2>How we use it</h2>
+    <p>To run the app for you: render your Today screen, surface your inventory, answer Coach questions about your stack.</p>
+    <p>To improve the app: bug reports, version-to-version stability tracking, anonymous feature usage so we know what to build next.</p>
+    <p>To process payments: forwarding subscription events to Stripe or the app store.</p>
+    <p>We do not use your data to train models. Your Coach conversations are not used by us or Anthropic for training under our API contract.</p>
+  </section>
+
+  <section>
+    <h2>Who we share it with</h2>
+    <p><strong>Supabase</strong> (our auth and database provider) — stores your encrypted account and tracking data.</p>
+    <p><strong>Anthropic</strong> (the AI behind Coach) — receives the text of your Coach messages so it can generate a response. Anthropic does not retain or train on this data per our API agreement.</p>
+    <p><strong>Stripe / Apple / Google</strong> — handle payments. They see what they need to charge you; we see only the subscription status.</p>
+    <p><strong>Nobody else.</strong> Not advertisers, not data brokers, not analytics resellers.</p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p><strong>Export:</strong> hit Export in your Profile to download a JSON file of everything you've ever logged.</p>
+    <p><strong>Delete:</strong> hit Delete account in Profile — your account, profile, doses, vials, schedules, and Coach history are removed from our servers within 7 days.</p>
+    <p><strong>Correct:</strong> edit any field at any time. Nothing is locked.</p>
+    <p>If you're in the EU/UK/California and want to exercise a specific GDPR / UK GDPR / CCPA right (access, portability, restriction, etc.), email <a href="mailto:hello@pinned.fit">hello@pinned.fit</a> and we'll respond within 30 days.</p>
+  </section>
+
+  <section>
+    <h2>Security</h2>
+    <p>TLS in transit. AES-256 at rest. Auth tokens scoped per session and rotated. Service worker caches the app shell locally so most of Pinned works without network access.</p>
+    <p>No system is perfectly secure. If we ever experience a breach affecting your data, we'll notify you by email within 72 hours of confirming it.</p>
+  </section>
+
+  <section>
+    <h2>Kids</h2>
+    <p>Pinned is not intended for anyone under 18. We don't knowingly collect data from minors. If you believe a minor has used the app, email <a href="mailto:hello@pinned.fit">hello@pinned.fit</a> and we'll remove the account.</p>
+  </section>
+
+  <section>
+    <h2>Changes</h2>
+    <p>We'll update this policy if our data practices change. Material updates get a notice in the app and an email to your account address.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about privacy: <a href="mailto:hello@pinned.fit">hello@pinned.fit</a>. We respond to every email.</p>
+  </section>
+
+</article>
+
+<footer>
+  <div class="foot-inner">
+    <a href="/" class="foot-brand">
+      <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+        <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#fff"/>
+      </svg>
+      <span class="nav-wordmark">pinned</span>
+    </a>
+    <div class="foot-links">
+      <a href="/howitworks">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/faq">FAQ</a>
+      <a href="mailto:hello@pinned.fit">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+  <div class="foot-disclaimer">
+    Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide. © 2026 Pinned.
+  </div>
+</footer>
+
+</body>
+</html>
