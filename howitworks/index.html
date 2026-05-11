@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How It Works — Pinned</title>
-<meta name="description" content="A quick tour of every screen in Pinned — Today, Calculator, Tracker, Coach, and Library.">
+<meta name="description" content="A visual tour of every screen and feature in Pinned — Today, Stack Optimizer, Calculator, Vial Scanner, Tracker, Coach, Library.">
 <meta property="og:title" content="How Pinned works">
-<meta property="og:description" content="Five screens. Each one tuned for one job.">
+<meta property="og:description" content="A guided tour of the cleanest peptide app on the planet.">
+<meta property="og:image" content="https://pinned.fit/img/og.png">
 <meta property="og:url" content="https://pinned.fit/howitworks">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 24'><path d='M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z' fill='%230A0A0C'/></svg>">
@@ -26,11 +27,58 @@
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
   }
+  img { display: block; max-width: 100%; }
   a { text-decoration: none; color: inherit; }
   button { font-family: inherit; }
   ::selection { background: #3D7BFF; color: #fff; }
 
-  /* ─── NAV ─────────────────────────────────────────────────── */
+  :root {
+    --blue:        #3D7BFF;
+    --purple:      #7C5CFF;
+    --ink:         #0A0A0C;
+    --ink-2:       #2A2A30;
+    --muted:       #6B6B75;
+    --faint:       #B0B0B8;
+    --hairline:    #ECECEF;
+    --surface:     #FAFAFB;
+    --serif:       'Instrument Serif', 'Times New Roman', Georgia, serif;
+  }
+
+  /* ─── PHONE FRAME ────────────────────────────────────── */
+  .phone {
+    position: relative;
+    border-radius: 46px;
+    background: #0A0A0C;
+    padding: 11px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 0 0 2px #1A1A20,
+      0 0 0 3px rgba(0,0,0,0.4),
+      0 30px 60px -20px rgba(15,15,30,0.40),
+      0 60px 120px -30px rgba(61,123,255,0.18);
+    aspect-ratio: 9 / 19.5;
+    width: 100%; max-width: 320px;
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    border-radius: 36px;
+    overflow: hidden;
+    background: #FFFFFF;
+    position: relative;
+  }
+  .phone-screen img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .phone::before {
+    content: ''; position: absolute;
+    top: 18px; left: 50%; transform: translateX(-50%);
+    width: 92px; height: 28px;
+    background: #0A0A0C; border-radius: 14px; z-index: 2;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
   nav {
     position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
     z-index: 100; height: 56px;
@@ -49,12 +97,12 @@
   .nav-wordmark {
     font-family: 'Archivo', 'Inter', sans-serif;
     font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
-    color: #0A0A0C; text-transform: lowercase; line-height: 1;
+    color: var(--ink); text-transform: lowercase; line-height: 1;
   }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 10px 20px; border-radius: 999px;
-    background: #0A0A0C; color: #fff;
+    background: var(--ink); color: #fff;
     font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
     transition: transform 0.12s, box-shadow 0.2s, background 0.2s;
     box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 16px -6px rgba(0,0,0,0.35);
@@ -62,35 +110,34 @@
   }
   .btn-primary:hover { transform: translateY(-1px); background: #1a1a22; }
 
-  /* ─── HERO ────────────────────────────────────────────────── */
+  /* ─── HERO ────────────────────────────────────────────── */
   .hero {
     position: relative;
-    padding: 130px 28px 60px;
-    overflow: hidden;
-    background: #FFFFFF;
+    padding: 130px 28px 70px;
+    overflow: hidden; background: #FFFFFF;
     text-align: center;
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
     background:
-      radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.18) 0%, rgba(61,123,255,0) 60%),
-      radial-gradient(40% 50% at 20% 100%, rgba(124,92,255,0.12) 0%, rgba(124,92,255,0) 70%);
+      radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.20) 0%, rgba(61,123,255,0) 60%),
+      radial-gradient(40% 50% at 20% 100%, rgba(124,92,255,0.14) 0%, rgba(124,92,255,0) 70%);
     pointer-events: none;
   }
   .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
   .hero-eyebrow {
     display: inline-block; padding: 5px 12px; border-radius: 999px;
-    background: #fff; border: 1px solid #ECECEF;
-    font-size: 12px; font-weight: 700; color: #2A2A30;
+    background: #fff; border: 1px solid var(--hairline);
+    font-size: 12px; font-weight: 700; color: var(--ink-2);
     letter-spacing: 0.01em; margin-bottom: 24px;
   }
   .hero h1 {
     font-size: clamp(56px, 9vw, 108px);
     font-weight: 900; letter-spacing: -0.05em; line-height: 0.92;
-    color: #0A0A0C; margin-bottom: 18px;
+    color: var(--ink); margin-bottom: 18px;
   }
   .hero h1 em {
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: var(--serif);
     font-style: italic; font-weight: 400;
     background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
     -webkit-background-clip: text; background-clip: text;
@@ -99,90 +146,332 @@
   }
   .hero p {
     font-size: clamp(18px, 2vw, 22px); line-height: 1.45;
-    color: #2A2A30; font-weight: 500; max-width: 560px;
-    margin: 0 auto;
+    color: var(--ink-2); font-weight: 500; max-width: 560px;
+    margin: 0 auto 36px;
   }
 
-  /* ─── SECTIONS ────────────────────────────────────────────── */
-  .stage {
-    padding: 60px 24px 30px;
-    max-width: 800px; margin: 0 auto;
+  /* Hero phone-trio */
+  .hero-phones {
+    position: relative; max-width: 720px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+    align-items: end; justify-items: center;
   }
-  .step {
-    display: flex; gap: 22px; align-items: flex-start;
-    padding: 28px 0;
-    border-top: 1px solid #ECECEF;
+  .hero-phones .phone { max-width: 220px; }
+  .hero-phones .tilt-l { transform: rotate(-4deg) translateY(20px); }
+  .hero-phones .tilt-r { transform: rotate(4deg)  translateY(20px); }
+  .hero-phones .middle { transform: translateY(-10px); }
+
+  /* ─── SECTION (alternating screenshot + copy) ─────────── */
+  .feature {
+    position: relative;
+    padding: 90px 28px;
+    border-top: 1px solid var(--hairline);
+    overflow: hidden;
   }
-  .step:first-of-type { border-top: none; }
-  .step-num {
-    flex-shrink: 0;
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic; font-size: 38px;
-    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
+  .feature.alt { background: var(--surface); }
+  .feature::before {
+    content: ''; position: absolute; inset: 0;
+    pointer-events: none; opacity: 0.6;
+    background: radial-gradient(60% 60% at var(--gx, 80%) 0%, rgba(61,123,255,0.10) 0%, transparent 60%);
+  }
+  .feature.purple::before {
+    background: radial-gradient(60% 60% at var(--gx, 80%) 0%, rgba(124,92,255,0.14) 0%, transparent 60%);
+  }
+  .feature-inner {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .feature.reverse .feature-inner { grid-template-columns: 1fr 1.05fr; }
+  .feature.reverse .feature-text  { order: 2; }
+  .feature.reverse .feature-visual { order: 1; }
+
+  .feature-kicker {
+    display: inline-block; padding: 5px 11px 5px 8px;
+    border-radius: 999px;
+    background: #fff; border: 1px solid var(--hairline);
+    font-size: 11px; font-weight: 700; color: var(--blue);
+    letter-spacing: 0.10em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .feature-kicker .pip {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--blue);
+    margin-right: 6px; vertical-align: middle;
+  }
+  .feature.purple .feature-kicker { color: var(--purple); }
+  .feature.purple .feature-kicker .pip { background: var(--purple); }
+
+  .feature h2 {
+    font-size: clamp(40px, 5.5vw, 64px);
+    font-weight: 900; letter-spacing: -0.045em; line-height: 0.98;
+    color: var(--ink); margin-bottom: 18px;
+  }
+  .feature h2 em {
+    font-family: var(--serif);
+    font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1; min-width: 44px;
+    letter-spacing: -0.025em;
   }
-  .step-body { flex: 1; min-width: 0; }
-  .step h2 {
-    font-size: clamp(28px, 4vw, 38px);
-    font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
-    margin-bottom: 6px; color: #0A0A0C;
+  .feature p.lead {
+    font-size: 18px; line-height: 1.55;
+    color: var(--ink-2); margin-bottom: 22px;
+    max-width: 480px;
   }
-  .step .kicker {
-    font-size: 13px; font-weight: 700; color: #3D7BFF;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin-bottom: 10px;
+  .feature ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; max-width: 480px; }
+  .feature li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 15.5px; line-height: 1.5; color: var(--ink-2);
   }
-  .step p {
-    font-size: 16px; line-height: 1.6; color: #2A2A30;
-    margin-bottom: 12px;
-  }
-  .step p:last-child { margin-bottom: 0; }
-  .step ul {
-    list-style: none; padding: 0; margin: 12px 0 0;
-    display: flex; flex-direction: column; gap: 7px;
-  }
-  .step li {
-    display: flex; gap: 10px; align-items: flex-start;
-    font-size: 14.5px; color: #2A2A30; line-height: 1.5;
-  }
-  .step li::before {
-    content: ''; flex-shrink: 0;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: #3D7BFF; margin-top: 8px;
-  }
-  .step b { color: #0A0A0C; font-weight: 700; }
+  .feature li svg { flex-shrink: 0; margin-top: 3px; }
+  .feature li b { color: var(--ink); font-weight: 700; }
 
-  /* ─── FINAL CTA ─────────────────────────────────────────── */
+  /* Phone visual wrap */
+  .feature-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    min-height: 540px;
+  }
+  .feature-phone-wrap {
+    position: relative;
+    transform: rotate(-2deg);
+  }
+  .feature.reverse .feature-phone-wrap { transform: rotate(2deg); }
+
+  /* Floating callout chip pinned to a phone */
+  .callout {
+    position: absolute;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px 10px 10px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px -14px rgba(15,15,30,0.18), 0 2px 6px -2px rgba(15,15,30,0.06);
+    font-size: 13px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.005em; white-space: nowrap; z-index: 3;
+  }
+  .callout .ic {
+    width: 30px; height: 30px; border-radius: 9px;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .callout .meta {
+    display: block; font-size: 11.5px; font-weight: 500; color: var(--muted);
+    margin-top: 1px;
+  }
+  .callout .meta strong { color: var(--ink-2); font-weight: 700; }
+
+  /* ─── SCANNER MOCK (no real screenshot, build one) ──── */
+  .scanner-mock {
+    width: 100%; max-width: 320px;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 46px;
+    background: linear-gradient(165deg, #0A0A1E 0%, #14143A 50%, #1A1F4A 100%);
+    padding: 11px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 0 0 2px #1A1A20,
+      0 0 0 3px rgba(0,0,0,0.4),
+      0 30px 60px -20px rgba(15,15,30,0.40),
+      0 60px 120px -30px rgba(124,92,255,0.30);
+    position: relative;
+  }
+  .scanner-mock::before {
+    content: ''; position: absolute;
+    top: 18px; left: 50%; transform: translateX(-50%);
+    width: 92px; height: 28px;
+    background: #0A0A0C; border-radius: 14px; z-index: 2;
+  }
+  .scanner-inner {
+    width: 100%; height: 100%;
+    border-radius: 36px;
+    background: linear-gradient(180deg, #0A0A1E 0%, #1A1A40 100%);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    padding: 64px 24px 22px;
+  }
+  .scanner-title {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+    color: rgba(255,255,255,0.6); letter-spacing: 0.12em;
+    text-transform: uppercase; text-align: center; margin-bottom: 18px;
+  }
+  .scanner-viewport {
+    flex: 1;
+    border-radius: 22px;
+    background:
+      radial-gradient(50% 50% at 50% 40%, rgba(61,123,255,0.18) 0%, transparent 70%),
+      rgba(255,255,255,0.04);
+    border: 1px dashed rgba(255,255,255,0.18);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Camera viewfinder corners */
+  .vf-corner {
+    position: absolute; width: 22px; height: 22px;
+    border: 2.5px solid #3D7BFF;
+  }
+  .vf-corner.tl { top: 14px; left: 14px; border-right: 0; border-bottom: 0; border-radius: 6px 0 0 0; }
+  .vf-corner.tr { top: 14px; right: 14px; border-left: 0; border-bottom: 0; border-radius: 0 6px 0 0; }
+  .vf-corner.bl { bottom: 14px; left: 14px; border-right: 0; border-top: 0; border-radius: 0 0 0 6px; }
+  .vf-corner.br { bottom: 14px; right: 14px; border-left: 0; border-top: 0; border-radius: 0 0 6px 0; }
+  /* Vial silhouette in the center */
+  .vial-silhouette {
+    position: relative;
+    width: 56px; height: 130px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(220,225,235,0.6) 100%);
+    border-radius: 10px;
+    box-shadow: inset -3px 0 8px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.30);
+  }
+  .vial-silhouette::before {
+    content: ''; position: absolute;
+    top: -10px; left: 50%; transform: translateX(-50%);
+    width: 28px; height: 10px;
+    background: #cfd6e1; border-radius: 4px 4px 1px 1px;
+  }
+  .vial-silhouette::after {
+    content: ''; position: absolute;
+    bottom: 38px; left: 10px; right: 10px;
+    height: 12px;
+    background: rgba(10,10,28,0.65); border-radius: 1px;
+  }
+  /* Scan line */
+  @keyframes scanLineSweep {
+    0%   { top: 14%; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { top: 86%; opacity: 0; }
+  }
+  .scan-line {
+    position: absolute; left: 14px; right: 14px; height: 2px;
+    background: linear-gradient(90deg, transparent, #3D7BFF, #7C5CFF, transparent);
+    box-shadow: 0 0 16px #3D7BFF, 0 0 32px #7C5CFF;
+    border-radius: 2px;
+    animation: scanLineSweep 2.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  }
+  /* Grade pill at bottom */
+  .grade-pill {
+    margin-top: 18px; padding: 12px 14px;
+    background: linear-gradient(135deg, rgba(61,123,255,0.20), rgba(124,92,255,0.14));
+    border: 1px solid rgba(61,123,255,0.40);
+    border-radius: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .grade-letter {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Archivo','Inter',sans-serif; font-size: 18px; font-weight: 900;
+    letter-spacing: -0.04em;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(61,123,255,0.45);
+  }
+  .grade-text { flex: 1; min-width: 0; }
+  .grade-text .label {
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800;
+    color: #fff; letter-spacing: -0.01em;
+  }
+  .grade-text .meta {
+    font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 1px;
+  }
+
+  /* ─── OPTIMIZER MOCK (dark gauge card) ───────────────── */
+  .optimizer-mock {
+    width: 100%; max-width: 360px;
+    border-radius: 28px;
+    background: linear-gradient(165deg, #0A0A1E 0%, #1B1040 55%, #0D1E3E 100%);
+    padding: 28px 24px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(124,92,255,0.30);
+  }
+  .optimizer-mock::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(50% 50% at 80% 0%, rgba(124,92,255,0.25), transparent 60%),
+      radial-gradient(40% 40% at 10% 100%, rgba(61,123,255,0.20), transparent 70%);
+    pointer-events: none;
+  }
+  .optimizer-mock-eyebrow {
+    position: relative; z-index: 1;
+    font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800;
+    color: #8FB1FF; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 14px; text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .optimizer-mock-eyebrow::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%; background: #8FB1FF;
+  }
+  /* Score gauge ring */
+  .gauge {
+    position: relative; z-index: 1;
+    width: 168px; height: 168px; margin: 0 auto;
+  }
+  .gauge svg { width: 100%; height: 100%; }
+  .gauge-num {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #fff;
+  }
+  .gauge-num .n {
+    font-family: 'Archivo','Inter',sans-serif; font-size: 56px; font-weight: 900;
+    letter-spacing: -0.04em; line-height: 1;
+    background: linear-gradient(135deg, #8FB1FF, #C7B5FF);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gauge-num .of100 {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    margin-top: 4px; letter-spacing: 0.04em;
+  }
+  .optimizer-label {
+    position: relative; z-index: 1;
+    text-align: center; margin-top: 14px;
+    font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 800;
+    color: #fff; letter-spacing: -0.025em;
+  }
+  .optimizer-summary {
+    position: relative; z-index: 1;
+    text-align: center; margin-top: 8px;
+    font-size: 13.5px; color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  /* ─── FINAL CTA ─────────────────────────────────────── */
   .final {
-    padding: 80px 24px 100px; background: #fff;
+    padding: 100px 24px 110px; background: #fff;
     text-align: center; position: relative; overflow: hidden;
   }
   .final::before {
     content: ''; position: absolute; inset: 0;
     background:
-      radial-gradient(55% 55% at 50% 0%, rgba(61,123,255,0.14) 0%, transparent 70%);
+      radial-gradient(55% 55% at 50% 0%, rgba(61,123,255,0.16) 0%, transparent 70%),
+      radial-gradient(35% 50% at 50% 100%, rgba(124,92,255,0.10) 0%, transparent 70%);
     pointer-events: none;
   }
-  .final-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .final-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
   .final h2 {
-    font-size: clamp(44px, 7vw, 84px);
-    font-weight: 900; letter-spacing: -0.05em; line-height: 0.95;
-    color: #0A0A0C; margin-bottom: 16px;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900; letter-spacing: -0.06em; line-height: 0.92;
+    color: var(--ink); margin-bottom: 20px;
   }
   .final h2 em {
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: var(--serif);
     font-style: italic; font-weight: 400;
     background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.025em;
   }
-  .final p { font-size: 17px; color: #6B6B75; margin-bottom: 28px; font-weight: 500; }
-  .final .btn-primary { font-size: 16px; padding: 14px 26px; }
+  .final p { font-size: 19px; color: var(--muted); margin-bottom: 32px; font-weight: 500; }
+  .final .btn-primary { font-size: 16px; padding: 16px 28px; }
 
-  /* ─── FOOTER ────────────────────────────────────────────── */
+  /* ─── FOOTER ────────────────────────────────────────── */
   footer {
     background: #0A0A0C; color: rgba(255,255,255,0.55);
     padding: 48px 32px 28px; font-size: 13px;
@@ -206,10 +495,26 @@
     line-height: 1.6;
   }
 
-  @media (max-width: 600px) {
+  /* ─── REVEAL anim ──────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── Responsive ───────────────────────────────────── */
+  @media (max-width: 880px) {
     .hero { padding: 120px 22px 50px; }
-    .step { gap: 14px; padding: 24px 0; }
-    .step-num { font-size: 30px; min-width: 30px; }
+    .hero-phones { grid-template-columns: 1fr; gap: 20px; max-width: 320px; }
+    .hero-phones .tilt-l, .hero-phones .tilt-r, .hero-phones .middle { transform: none; }
+    .hero-phones .tilt-l, .hero-phones .tilt-r { display: none; }
+
+    .feature { padding: 64px 22px; }
+    .feature-inner { grid-template-columns: 1fr; gap: 40px; }
+    .feature.reverse .feature-inner { grid-template-columns: 1fr; }
+    .feature.reverse .feature-text  { order: 2; }
+    .feature.reverse .feature-visual { order: 1; }
+    .feature-visual { min-height: 440px; }
+    .feature-phone-wrap, .feature.reverse .feature-phone-wrap { transform: none; }
+
+    .final { padding: 80px 22px; }
   }
 </style>
 </head>
@@ -233,98 +538,264 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">How it works</div>
-    <h1>Five screens.<br><em>One job each.</em></h1>
-    <p>No menus to memorize. Every page in Pinned does one specific thing, really well.</p>
+    <h1>The whole app,<br><em>screen by screen.</em></h1>
+    <p>Pinned is a peptide tracker built like a tool, not a database. Here's what every screen does.</p>
+    <div class="hero-phones">
+      <div class="phone tilt-l">
+        <div class="phone-screen"><img src="/img/today.png" alt="Today screen"/></div>
+      </div>
+      <div class="phone middle">
+        <div class="phone-screen"><img src="/img/calc.png" alt="Calculator screen"/></div>
+      </div>
+      <div class="phone tilt-r">
+        <div class="phone-screen"><img src="/img/coach.png" alt="Coach screen"/></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ─── STEPS ─── -->
-<section class="stage">
-
-  <div class="step">
-    <div class="step-num">01</div>
-    <div class="step-body">
-      <div class="kicker">Pinned (home)</div>
-      <h2>Your daily home.</h2>
-      <p>Every peptide you're running, all on one screen. Each card shows what to take, when it's due, and how to draw it. One tap to log a dose; the card greys out and shows when the next dose is coming.</p>
+<!-- ─── 1. TODAY ─── -->
+<section class="feature" style="--gx:90%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>Today</div>
+      <h2>Your daily<br><em>command center.</em></h2>
+      <p class="lead">Every peptide you're running on one screen. Each card knows what you're taking, when it's due, how to draw it — and how many doses are left in the vial.</p>
       <ul>
-        <li>Big countdown to your next dose</li>
-        <li>One-tap logging — no menus, no forms</li>
-        <li>Streak counter so you don't skip days</li>
-        <li>Site-rotation warnings when you're overusing one spot</li>
-        <li>Quick scan-vial button for new bottles</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Big countdown</b> to the next dose, per stack</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>One-tap logging</b> — no menus, no forms</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Streak counter</b> so you don't slip on consistency</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Site-rotation warnings</b> when you're hitting one spot too often</span></li>
       </ul>
     </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">02</div>
-    <div class="step-body">
-      <div class="kicker">Calculator</div>
-      <h2>The math, done right.</h2>
-      <p>Tell it your vial size and your dose. It tells you exactly how much water to add and which line to draw to on the syringe. No spreadsheets, no guesswork, no mixing up mL with units.</p>
-      <ul>
-        <li><b>Calculate water</b> — picks a clean syringe tick (10, 15, 20 u) and gives you the exact water amount</li>
-        <li><b>Calculate units</b> — for vials you've already mixed</li>
-        <li>"Suggest easiest mix" snaps the water amount to a round draw when possible</li>
-        <li><b>Stack &amp; blend mode</b> — multi-peptide vial math, automated</li>
-        <li>Warns you when a dose won't fit your selected syringe</li>
-      </ul>
+    <div class="feature-visual">
+      <div class="feature-phone-wrap">
+        <div class="phone"><div class="phone-screen"><img src="/img/today.png" alt="Today screen"/></div></div>
+        <div class="callout" style="top: 8%; left: -6%;">
+          <div class="ic" style="background: rgba(61,123,255,0.12);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3" stroke="#3D7BFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div>Dose logged</div>
+            <div class="meta"><strong>7-day streak</strong> · keep going</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="step">
-    <div class="step-num">03</div>
-    <div class="step-body">
-      <div class="kicker">Tracker</div>
-      <h2>Every dose. Every vial.</h2>
-      <p>Three tabs in one screen: <b>History</b>, <b>Body</b>, and <b>Inventory</b>. Adherence, streaks, dose-by-dose history, where you injected, and how many doses are left in each vial.</p>
+<!-- ─── 2. STACK OPTIMIZER ─── -->
+<section class="feature alt purple reverse" style="--gx:10%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>Stack Optimizer · AI</div>
+      <h2>An AI score<br><em>for your stack.</em></h2>
+      <p class="lead">Pinned analyzes your peptides, your goals, and your timing — then gives you a single 0–100 score with the specific upgrades that would push it higher.</p>
       <ul>
-        <li><b>History</b> — every dose grouped by day, with site and time</li>
-        <li><b>Body</b> — anatomical heatmap showing which sites are cooling down vs. overused</li>
-        <li><b>Inventory</b> — vial-by-vial countdown to "use by" (28-day shelf life), with vendor + lot info</li>
-        <li>Scan a vial label to add it; we'll pull the vendor grade automatically</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Goal coverage, timing, synergy</b> — all scored in plain English</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>"What to fix"</b> ranked top 5 changes that move the score the most</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>"What's working"</b> highlights synergies you're already nailing</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Specific dose / timing / site swaps</b> — not generic advice</span></li>
       </ul>
     </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">04</div>
-    <div class="step-body">
-      <div class="kicker">Coach</div>
-      <h2>AI that knows your stack.</h2>
-      <p>Powered by Claude. Ask anything about your peptides — timing, side effects, stacking, sourcing, cycling. It already knows what you're running, what you've logged, and what's in your fridge, so the answers are about <em>your</em> protocol, not generic advice.</p>
-      <ul>
-        <li>Trained on the latest peptide research</li>
-        <li>Reads your stack + recent doses + vial inventory automatically</li>
-        <li>Stays in scope — won't pretend to be your doctor</li>
-        <li>Free to try. Upgrade if you want unlimited messages</li>
-      </ul>
+    <div class="feature-visual">
+      <div class="optimizer-mock">
+        <div class="optimizer-mock-eyebrow">Stack Optimizer</div>
+        <div class="gauge">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="8"/>
+            <circle cx="50" cy="50" r="42" fill="none"
+              stroke="url(#optGrad)" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="263.9" stroke-dashoffset="58"
+              transform="rotate(-90 50 50)"/>
+            <defs>
+              <linearGradient id="optGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3D7BFF"/>
+                <stop offset="1" stop-color="#7C5CFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="gauge-num">
+            <div class="n">78</div>
+            <div class="of100">/ 100</div>
+          </div>
+        </div>
+        <div class="optimizer-label">Strong</div>
+        <div class="optimizer-summary">Solid healing stack. Add CJC-1295 to round out the GH axis for a +9-point bump.</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="step">
-    <div class="step-num">05</div>
-    <div class="step-body">
-      <div class="kicker">Library</div>
-      <h2>50+ peptides. Curated stacks.</h2>
-      <p>Browse every major peptide with plain-English explanations. Mechanism, typical dose, half-life, recommended timing, and risks — all written for humans, not biochemists.</p>
+<!-- ─── 3. CALCULATOR ─── -->
+<section class="feature" style="--gx:85%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>Calculator</div>
+      <h2>The math,<br><em>done right.</em></h2>
+      <p class="lead">Tell it your vial size and your dose. It tells you exactly how much water to add and which line to draw to on your syringe. No spreadsheets, no guessing, no mixing up mL with units.</p>
       <ul>
-        <li>Search and filter by goal (healing, muscle, sleep, longevity, etc.)</li>
-        <li>Tap any peptide for its full profile</li>
-        <li>Curated stacks (Wolverine, Cortex, Sleep &amp; Repair, more) load straight into Today</li>
-        <li>Tap a stack to see which peptides go in and how to schedule them</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Calculate water</b> — picks a clean syringe tick (10, 15, 20 u) for you</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Calculate units</b> — for vials you've already mixed</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Stack &amp; Blend mode</b> — multi-peptide vial math, automated</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Won't-fit warning</b> if your dose overflows your selected syringe</span></li>
       </ul>
     </div>
+    <div class="feature-visual">
+      <div class="feature-phone-wrap">
+        <div class="phone"><div class="phone-screen"><img src="/img/calc.png" alt="Calculator screen"/></div></div>
+        <div class="callout" style="top: 42%; right: -10%;">
+          <div class="ic" style="background: rgba(124,92,255,0.14);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.2 3.2L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div>Dose calculated</div>
+            <div class="meta"><strong>BPC-157</strong> · 10 units</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
+<!-- ─── 4. VIAL SCANNER ─── -->
+<section class="feature alt purple reverse" style="--gx:15%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>Vial Scanner</div>
+      <h2>Scan a vial.<br><em>Get an A+ to F.</em></h2>
+      <p class="lead">Point your camera at any vial label. Pinned reads the vendor and cross-references it against <b>270+ independently rated suppliers</b> — sourced from Finnrick, Janoshik, and PeptideScores public lab data.</p>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Instant letter grade</b> based on real lab purity data</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Auto-fills your inventory</b> — vendor, lot, stability countdown</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Catches sketchy vendors</b> before you reconstitute, not after</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Updated daily</b> as new lab tests publish</span></li>
+      </ul>
+    </div>
+    <div class="feature-visual">
+      <div class="scanner-mock" aria-label="Vial scanner mockup">
+        <div class="scanner-inner">
+          <div class="scanner-title">✦ Scanning vial</div>
+          <div class="scanner-viewport">
+            <span class="vf-corner tl"></span>
+            <span class="vf-corner tr"></span>
+            <span class="vf-corner bl"></span>
+            <span class="vf-corner br"></span>
+            <div class="vial-silhouette"></div>
+            <div class="scan-line"></div>
+          </div>
+          <div class="grade-pill">
+            <div class="grade-letter">A+</div>
+            <div class="grade-text">
+              <div class="label">Trusted Peptide</div>
+              <div class="meta">99.4% avg purity · 14 tests</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 5. TRACKER ─── -->
+<section class="feature" style="--gx:80%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>Tracker</div>
+      <h2>Every dose.<br><em>Every vial.</em></h2>
+      <p class="lead">Three tabs in one: <b>History</b>, <b>Body Map</b>, and <b>Inventory</b>. Adherence, streaks, every dose you've logged, where you injected, and how much vial you've got left.</p>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>History</b> — every dose grouped by day, with site and time</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Body Map</b> — anatomical heatmap showing which sites are cooling vs overused</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Inventory</b> — countdown to "use by" date per vial (28-day window)</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Use This Site Next</b> — Pinned suggests the optimal rotation site</span></li>
+      </ul>
+    </div>
+    <div class="feature-visual">
+      <div class="feature-phone-wrap">
+        <div class="phone"><div class="phone-screen"><img src="/img/tracker.png" alt="Tracker screen"/></div></div>
+        <div class="callout" style="bottom: 12%; left: -8%;">
+          <div class="ic" style="background: rgba(61,123,255,0.12);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="4" width="11" height="8" rx="1.5" stroke="#3D7BFF" stroke-width="1.6"/><path d="M5 4l1-1h4l1 1" stroke="#3D7BFF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div>Vial scanned</div>
+            <div class="meta"><strong>Trusted Peptide</strong> · A+ · 28d shelf</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 6. COACH ─── -->
+<section class="feature alt purple reverse" style="--gx:15%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>AI Coach</div>
+      <h2>AI that knows<br><em>your stack.</em></h2>
+      <p class="lead">Powered by Claude. Ask anything about your peptides — timing, side effects, stacking, sourcing, cycling. It already knows what you're running, so the answers are about <em>your</em> protocol, not generic advice.</p>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Reads your stack + recent doses + inventory</b> automatically</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Trained on peptide research</b> — not random Reddit threads</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Stays in scope</b> — won't pretend to be your doctor</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Free to try</b>; Pinned Pro unlocks unlimited chats</span></li>
+      </ul>
+    </div>
+    <div class="feature-visual">
+      <div class="feature-phone-wrap">
+        <div class="phone"><div class="phone-screen"><img src="/img/coach.png" alt="AI Coach screen"/></div></div>
+        <div class="callout" style="top: 14%; right: -8%;">
+          <div class="ic" style="background: rgba(124,92,255,0.16);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 4L13.5 7L9.4 8.5L8 13L6.6 8.5L2.5 7L6.6 6Z" fill="#7C5CFF"/></svg>
+          </div>
+          <div>
+            <div>Knows your stack</div>
+            <div class="meta"><strong>Tuned</strong> · to your doses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 7. LIBRARY ─── -->
+<section class="feature" style="--gx:90%;">
+  <div class="feature-inner">
+    <div class="feature-text reveal">
+      <div class="feature-kicker"><span class="pip"></span>Library</div>
+      <h2>50+ peptides.<br><em>Curated stacks.</em></h2>
+      <p class="lead">Every major peptide, profiled in plain English. Mechanism, typical dose, half-life, recommended timing, and risks — written for humans, not biochemists.</p>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Search and filter</b> by goal (healing, muscle, sleep, longevity…)</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Curated stacks</b> — Wolverine, Cortex, Sleep &amp; Repair, Titan, more</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Load any stack into Today</b> in one tap</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>"Use this site next"</b> recommendations from real research</span></li>
+      </ul>
+    </div>
+    <div class="feature-visual">
+      <div class="feature-phone-wrap">
+        <div class="phone"><div class="phone-screen"><img src="/img/library.png" alt="Library screen"/></div></div>
+        <div class="callout" style="top: 38%; left: -10%;">
+          <div class="ic" style="background: rgba(61,123,255,0.12);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="#3D7BFF" stroke-width="1.6"/><path d="M5 6h6M5 9h4" stroke="#3D7BFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div>Stack loaded</div>
+            <div class="meta"><strong>Wolverine</strong> · 3 peptides</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── FINAL CTA ─── -->
 <section class="final">
   <div class="final-inner">
     <h2>Now you<br><em>know it all.</em></h2>
-    <p>Open Pinned. Add your first peptide. Takes about 30 seconds.</p>
+    <p>Free. iOS &amp; Android. Setup in 30 seconds.</p>
     <a href="/" class="btn-primary">
       Get Pinned
       <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -353,6 +824,13 @@
     Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide. © 2026 Pinned.
   </div>
 </footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 
 </body>
 </html>
