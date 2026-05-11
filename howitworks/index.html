@@ -83,21 +83,43 @@
     position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
     z-index: 100; height: 56px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 12px 0 22px;
+    gap: 18px;
+    padding: 0 8px 0 22px;
     background: rgba(255,255,255,0.78);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(10,10,12,0.06);
     border-radius: 999px;
     box-shadow: 0 2px 24px -8px rgba(15,15,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
-    width: calc(100% - 32px); max-width: 720px;
+    width: calc(100% - 32px); max-width: 880px;
   }
-  .nav-logo { display: flex; align-items: center; gap: 9px; }
+  .nav-logo { display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
   .nav-glyph { width: 14px; height: 24px; flex-shrink: 0; }
   .nav-wordmark {
     font-family: 'Archivo', 'Inter', sans-serif;
     font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
     color: var(--ink); text-transform: lowercase; line-height: 1;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 6px;
+    list-style: none; padding: 0; margin: 0;
+  }
+  .nav-links a {
+    padding: 8px 12px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 600; color: var(--muted);
+    letter-spacing: -0.005em;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--ink); background: rgba(10,10,12,0.05); }
+  .nav-links a.active { color: var(--ink); background: rgba(10,10,12,0.06); }
+  @media (max-width: 720px) {
+    nav { padding: 0 8px 0 18px; gap: 8px; }
+    .nav-links a { padding: 7px 10px; font-size: 12.5px; }
+    .nav-wordmark { font-size: 17px; }
+  }
+  @media (max-width: 520px) {
+    .nav-links { display: none; }
   }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 6px;
@@ -528,6 +550,11 @@
     </svg>
     <span class="nav-wordmark">pinned</span>
   </a>
+  <ul class="nav-links">
+    <li><a href="/howitworks" class="active">How it works</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
   <a href="/" class="btn-primary">
     Get it
     <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -814,6 +841,7 @@
     </a>
     <div class="foot-links">
       <a href="/howitworks">How it works</a>
+      <a href="/pricing">Pricing</a>
       <a href="/faq">FAQ</a>
       <a href="mailto:hello@pinned.fit">Contact</a>
       <a href="/privacy">Privacy</a>

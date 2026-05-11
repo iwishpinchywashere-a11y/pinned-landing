@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Pinned</title>
+<meta name="description" content="Pinned is free to use. Upgrade to Pinned Pro from $1.15/week for unlimited Coach, Stack Optimizer, Vial Scanner grades, and more.">
+<meta property="og:title" content="Pinned — Pricing">
+<meta property="og:description" content="Free forever. Pinned Pro from $1.15/week.">
+<meta property="og:image" content="https://pinned.fit/img/og.png">
+<meta property="og:url" content="https://pinned.fit/pricing">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 24'><path d='M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z' fill='%230A0A0C'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&family=Instrument+Serif:ital@0;1&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "SF Pro Text", sans-serif;
+    background: #FFFFFF; color: #0A0A0C;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; }
+  ::selection { background: #3D7BFF; color: #fff; }
+
+  :root {
+    --blue: #3D7BFF;
+    --purple: #7C5CFF;
+    --ink: #0A0A0C;
+    --ink-2: #2A2A30;
+    --muted: #6B6B75;
+    --faint: #B0B0B8;
+    --hairline: #ECECEF;
+    --surface: #FAFAFB;
+    --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 100; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px;
+    padding: 0 8px 0 22px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(10,10,12,0.06);
+    border-radius: 999px;
+    box-shadow: 0 2px 24px -8px rgba(15,15,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
+    width: calc(100% - 32px); max-width: 880px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
+  .nav-glyph { width: 14px; height: 24px; flex-shrink: 0; }
+  .nav-wordmark {
+    font-family: 'Archivo', 'Inter', sans-serif;
+    font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
+    color: var(--ink); text-transform: lowercase; line-height: 1;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 6px;
+    list-style: none; padding: 0; margin: 0;
+  }
+  .nav-links a {
+    padding: 8px 12px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 600; color: var(--muted);
+    transition: color 0.15s, background 0.15s; white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--ink); background: rgba(10,10,12,0.05); }
+  .nav-links a.active { color: var(--ink); background: rgba(10,10,12,0.06); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 999px;
+    background: var(--ink); color: #fff;
+    font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+    transition: transform 0.12s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 16px -6px rgba(0,0,0,0.35);
+    cursor: pointer; border: none; white-space: nowrap;
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: #1a1a22; }
+  @media (max-width: 720px) {
+    nav { padding: 0 8px 0 18px; gap: 8px; }
+    .nav-links a { padding: 7px 10px; font-size: 12.5px; }
+    .nav-wordmark { font-size: 17px; }
+  }
+  @media (max-width: 520px) {
+    .nav-links { display: none; }
+  }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    position: relative; padding: 130px 28px 50px;
+    overflow: hidden; background: #FFFFFF; text-align: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.20) 0%, transparent 60%),
+      radial-gradient(40% 50% at 20% 100%, rgba(124,92,255,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block; padding: 5px 12px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--hairline);
+    font-size: 12px; font-weight: 700; color: var(--ink-2);
+    letter-spacing: 0.01em; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 9vw, 108px);
+    font-weight: 900; letter-spacing: -0.05em; line-height: 0.92;
+    color: var(--ink); margin-bottom: 18px;
+  }
+  .hero h1 em {
+    font-family: var(--serif);
+    font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .hero p {
+    font-size: clamp(18px, 2vw, 22px); line-height: 1.45;
+    color: var(--ink-2); font-weight: 500; max-width: 560px; margin: 0 auto;
+  }
+
+  /* ─── PLAN PICKER ─────────────────────────────────────── */
+  .plans {
+    padding: 50px 24px 30px;
+    max-width: 920px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  }
+  .plan {
+    position: relative;
+    background: #fff;
+    border: 1.5px solid var(--hairline);
+    border-radius: 22px;
+    padding: 28px 22px 24px;
+    transition: transform 0.2s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .plan:hover { transform: translateY(-3px); }
+  .plan.featured {
+    border: 1.5px solid rgba(61,123,255,0.35);
+    background: linear-gradient(135deg, #fff 0%, #FAFAFF 60%, #F5F1FF 100%);
+    box-shadow: 0 18px 50px -16px rgba(61,123,255,0.30);
+  }
+  .plan-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    padding: 5px 14px; border-radius: 999px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: #fff;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.10em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 18px -4px rgba(61,123,255,0.45);
+  }
+  .plan-label {
+    font-size: 13px; font-weight: 700; color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .plan-price {
+    display: flex; align-items: baseline; gap: 6px;
+    margin-bottom: 6px;
+  }
+  .plan-price .n {
+    font-family: 'Archivo','Inter',sans-serif;
+    font-size: 44px; font-weight: 900; letter-spacing: -0.045em; line-height: 1;
+    color: var(--ink);
+  }
+  .plan-price .per {
+    font-size: 14px; font-weight: 600; color: var(--muted);
+  }
+  .plan-sub {
+    font-size: 13.5px; color: var(--muted); margin-bottom: 18px; line-height: 1.45;
+    min-height: 36px;
+  }
+  .plan-cta {
+    display: block; width: 100%; padding: 13px;
+    border-radius: 13px; border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 800;
+    letter-spacing: -0.01em;
+    transition: transform 0.12s, box-shadow 0.2s;
+  }
+  .plan-cta.primary {
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: #fff;
+    box-shadow: 0 10px 28px -8px rgba(61,123,255,0.50);
+  }
+  .plan-cta.primary:hover { transform: translateY(-1px); }
+  .plan-cta.subtle {
+    background: var(--ink); color: #fff;
+  }
+  .plan-cta.subtle:hover { transform: translateY(-1px); background: #1a1a22; }
+
+  /* ─── FREE TIER STRIP ─────────────────────────────────── */
+  .free-strip {
+    max-width: 920px; margin: 18px auto 0; padding: 0 24px;
+  }
+  .free-card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 20px 22px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .free-card .ic {
+    width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+    background: #fff; border: 1px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .free-card h3 {
+    font-size: 17px; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 2px;
+  }
+  .free-card p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── COMPARE TABLE ──────────────────────────────────── */
+  .compare {
+    padding: 70px 24px 80px;
+    max-width: 900px; margin: 0 auto;
+  }
+  .compare h2 {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 900;
+    letter-spacing: -0.04em; line-height: 1.05;
+    text-align: center; margin-bottom: 36px;
+  }
+  .compare h2 em {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .compare-grid {
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    overflow: hidden;
+  }
+  .compare-row {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+    align-items: center;
+    border-top: 1px solid var(--hairline);
+  }
+  .compare-row:first-child { border-top: none; background: var(--surface); }
+  .compare-row > div { padding: 14px 18px; font-size: 14px; }
+  .compare-row > div:nth-child(2), .compare-row > div:nth-child(3) {
+    text-align: center; font-weight: 600;
+  }
+  .compare-row.head > div {
+    font-size: 11px; font-weight: 800; color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .compare-feature { color: var(--ink); font-weight: 600; }
+  .check {
+    display: inline-flex; width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(61,123,255,0.10); border: 1px solid rgba(61,123,255,0.30);
+    align-items: center; justify-content: center;
+  }
+  .check.pro {
+    background: rgba(124,92,255,0.10); border-color: rgba(124,92,255,0.30);
+  }
+  .dash { color: var(--faint); font-size: 18px; }
+
+  /* ─── FAQ MINI ────────────────────────────────────────── */
+  .pricing-faq {
+    padding: 30px 24px 70px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .pricing-faq h2 {
+    font-size: clamp(28px, 4vw, 40px); font-weight: 900;
+    letter-spacing: -0.04em; margin-bottom: 24px; text-align: center;
+  }
+  details {
+    border-top: 1px solid var(--hairline);
+    padding: 18px 0;
+  }
+  details:last-of-type { border-bottom: 1px solid var(--hairline); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    font-size: 17px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(61,123,255,0.10);
+    border: 1px solid rgba(61,123,255,0.30);
+    color: var(--blue); font-weight: 800; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { content: '−'; transform: rotate(180deg); }
+  .answer { margin-top: 12px; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+
+  /* ─── FINAL CTA ──────────────────────────────────────── */
+  .final {
+    padding: 80px 24px 110px; background: #fff;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .final::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(55% 55% at 50% 0%, rgba(61,123,255,0.16) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .final h2 {
+    font-size: clamp(44px, 7vw, 84px);
+    font-weight: 900; letter-spacing: -0.05em; line-height: 0.95;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .final h2 em {
+    font-family: var(--serif);
+    font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .final p { font-size: 17px; color: var(--muted); margin-bottom: 28px; font-weight: 500; }
+  .final .btn-primary { font-size: 16px; padding: 14px 26px; }
+
+  /* ─── FOOTER ─────────────────────────────────────────── */
+  footer {
+    background: #0A0A0C; color: rgba(255,255,255,0.55);
+    padding: 48px 32px 28px; font-size: 13px;
+  }
+  .foot-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .foot-brand { display: flex; align-items: center; gap: 9px; }
+  .foot-brand .nav-glyph path { fill: #fff; }
+  .foot-brand .nav-wordmark { color: #fff; }
+  .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .foot-links a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+  .foot-links a:hover { color: #fff; }
+  .foot-disclaimer {
+    max-width: 1180px; margin: 24px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    font-size: 11.5px; color: rgba(255,255,255,0.40);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
+    .plans { grid-template-columns: 1fr; max-width: 420px; }
+    .plan.featured { order: -1; }
+    .compare-row { grid-template-columns: 1.4fr 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+      <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#0A0A0C"/>
+    </svg>
+    <span class="nav-wordmark">pinned</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/howitworks">How it works</a></li>
+    <li><a href="/pricing" class="active">Pricing</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+  <a href="/" class="btn-primary">
+    Get it
+    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Pricing</div>
+    <h1>Free to start.<br><em>$1.15/wk for everything.</em></h1>
+    <p>The peptide app. Free for the calculator. Pinned Pro unlocks the rest.</p>
+  </div>
+</section>
+
+<!-- ─── PLAN PICKER ─── -->
+<section class="plans">
+
+  <!-- Weekly -->
+  <div class="plan">
+    <div class="plan-label">Weekly</div>
+    <div class="plan-price">
+      <span class="n">$5.99</span>
+      <span class="per">/ week</span>
+    </div>
+    <div class="plan-sub">3-day free trial. Try it, cancel anytime if it's not for you.</div>
+    <a href="/" class="plan-cta subtle">Start free trial</a>
+  </div>
+
+  <!-- Annual (featured) -->
+  <div class="plan featured">
+    <span class="plan-badge">✦ Best value · save 80%</span>
+    <div class="plan-label" style="color: var(--blue);">Annual</div>
+    <div class="plan-price">
+      <span class="n">$59.99</span>
+      <span class="per">/ year</span>
+    </div>
+    <div class="plan-sub">Just <b>$1.15/week</b>. Lock in the best price.</div>
+    <a href="/" class="plan-cta primary">Get Pinned Pro →</a>
+  </div>
+
+  <!-- Monthly -->
+  <div class="plan">
+    <div class="plan-label">Monthly</div>
+    <div class="plan-price">
+      <span class="n">$14.99</span>
+      <span class="per">/ month</span>
+    </div>
+    <div class="plan-sub">Flexible. Cancel anytime, no questions.</div>
+    <a href="/" class="plan-cta subtle">Choose Monthly</a>
+  </div>
+
+</section>
+
+<!-- ─── FREE STRIP ─── -->
+<div class="free-strip">
+  <div class="free-card">
+    <div class="ic">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="8" stroke="#3D7BFF" stroke-width="1.6"/>
+        <path d="M6 10l2.5 2.5L14 7" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <h3>Free forever — no card needed</h3>
+      <p>Download the app, accept the disclaimer, and you're in. Use the calculator for BPC-157, browse all 50+ peptides, and read every protocol — no payment required.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── COMPARE TABLE ─── -->
+<section class="compare">
+  <h2>What's included<br><em>in Pinned Pro.</em></h2>
+  <div class="compare-grid">
+    <div class="compare-row head">
+      <div>Feature</div>
+      <div>Free</div>
+      <div>Pinned Pro</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Industry-leading calculator</div>
+      <div>BPC-157 only</div>
+      <div>All 50+ peptides</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Stack &amp; blend math</div>
+      <div><span class="dash">—</span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">AI Coach (Claude-powered)</div>
+      <div>Read-only</div>
+      <div>Unlimited</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Stack Optimizer (0–100 score)</div>
+      <div><span class="dash">—</span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Vial Scanner with vendor grades</div>
+      <div><span class="dash">—</span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Auto inventory tracking</div>
+      <div><span class="dash">—</span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Site rotation tracking</div>
+      <div><span class="dash">—</span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Library (50+ peptides)</div>
+      <div><span class="check"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-feature">Data export (JSON)</div>
+      <div><span class="check"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+      <div><span class="check pro"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5L9 3" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING FAQ ─── -->
+<section class="pricing-faq">
+  <h2>Pricing questions.</h2>
+
+  <details>
+    <summary>Is there really a free version?</summary>
+    <div class="answer">Yes. The disclaimer, the BPC-157 calculator, the full peptide Library, the basic tracker, and JSON export are free forever — no card, no email required.</div>
+  </details>
+
+  <details>
+    <summary>What does the 3-day free trial cover?</summary>
+    <div class="answer">Full Pinned Pro access — every feature on this page. We don't downgrade anything during the trial. If you cancel before day 3 you pay nothing.</div>
+  </details>
+
+  <details>
+    <summary>Can I switch between plans?</summary>
+    <div class="answer">Anytime. Upgrade from weekly to annual to lock the cheaper rate, or downgrade if your budget changes. The next billing cycle starts with the new plan.</div>
+  </details>
+
+  <details>
+    <summary>Do you offer refunds?</summary>
+    <div class="answer">If you're charged and Pinned isn't doing it for you, email <a href="mailto:hello@pinned.fit" style="color:var(--blue);">hello@pinned.fit</a> within 14 days and we'll refund you. No forms.</div>
+  </details>
+
+  <details>
+    <summary>Is my payment info secure?</summary>
+    <div class="answer">All payments are processed through Stripe (web) or Apple/Google's in-app purchase systems (mobile). Pinned never sees your card details. Our servers store only your subscription status.</div>
+  </details>
+
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final">
+  <div class="final-inner">
+    <h2>Try Pro<br><em>for 3 days.</em></h2>
+    <p>Free for 3 days. $1.15/week after that if you stay. Cancel in two taps.</p>
+    <a href="/" class="btn-primary">
+      Start free trial
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="foot-inner">
+    <a href="/" class="foot-brand">
+      <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+        <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#fff"/>
+      </svg>
+      <span class="nav-wordmark">pinned</span>
+    </a>
+    <div class="foot-links">
+      <a href="/howitworks">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/faq">FAQ</a>
+      <a href="mailto:hello@pinned.fit">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+  <div class="foot-disclaimer">
+    Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide. © 2026 Pinned.
+  </div>
+</footer>
+
+</body>
+</html>
