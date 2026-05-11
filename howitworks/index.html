@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Pinned</title>
+<meta name="description" content="A quick tour of every screen in Pinned — Today, Calculator, Tracker, Coach, and Library.">
+<meta property="og:title" content="How Pinned works">
+<meta property="og:description" content="Five screens. Each one tuned for one job.">
+<meta property="og:url" content="https://pinned.fit/howitworks">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 24'><path d='M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z' fill='%230A0A0C'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&family=Instrument+Serif:ital@0;1&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "SF Pro Text", sans-serif;
+    background: #FFFFFF; color: #0A0A0C;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; }
+  ::selection { background: #3D7BFF; color: #fff; }
+
+  /* ─── NAV ─────────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 100; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px 0 22px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(10,10,12,0.06);
+    border-radius: 999px;
+    box-shadow: 0 2px 24px -8px rgba(15,15,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
+    width: calc(100% - 32px); max-width: 720px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 9px; }
+  .nav-glyph { width: 14px; height: 24px; flex-shrink: 0; }
+  .nav-wordmark {
+    font-family: 'Archivo', 'Inter', sans-serif;
+    font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
+    color: #0A0A0C; text-transform: lowercase; line-height: 1;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 999px;
+    background: #0A0A0C; color: #fff;
+    font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+    transition: transform 0.12s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 16px -6px rgba(0,0,0,0.35);
+    cursor: pointer; border: none; white-space: nowrap;
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: #1a1a22; }
+
+  /* ─── HERO ────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    padding: 130px 28px 60px;
+    overflow: hidden;
+    background: #FFFFFF;
+    text-align: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.18) 0%, rgba(61,123,255,0) 60%),
+      radial-gradient(40% 50% at 20% 100%, rgba(124,92,255,0.12) 0%, rgba(124,92,255,0) 70%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block; padding: 5px 12px; border-radius: 999px;
+    background: #fff; border: 1px solid #ECECEF;
+    font-size: 12px; font-weight: 700; color: #2A2A30;
+    letter-spacing: 0.01em; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 9vw, 108px);
+    font-weight: 900; letter-spacing: -0.05em; line-height: 0.92;
+    color: #0A0A0C; margin-bottom: 18px;
+  }
+  .hero h1 em {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .hero p {
+    font-size: clamp(18px, 2vw, 22px); line-height: 1.45;
+    color: #2A2A30; font-weight: 500; max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ─── SECTIONS ────────────────────────────────────────────── */
+  .stage {
+    padding: 60px 24px 30px;
+    max-width: 800px; margin: 0 auto;
+  }
+  .step {
+    display: flex; gap: 22px; align-items: flex-start;
+    padding: 28px 0;
+    border-top: 1px solid #ECECEF;
+  }
+  .step:first-of-type { border-top: none; }
+  .step-num {
+    flex-shrink: 0;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic; font-size: 38px;
+    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1; min-width: 44px;
+  }
+  .step-body { flex: 1; min-width: 0; }
+  .step h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
+    margin-bottom: 6px; color: #0A0A0C;
+  }
+  .step .kicker {
+    font-size: 13px; font-weight: 700; color: #3D7BFF;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .step p {
+    font-size: 16px; line-height: 1.6; color: #2A2A30;
+    margin-bottom: 12px;
+  }
+  .step p:last-child { margin-bottom: 0; }
+  .step ul {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .step li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14.5px; color: #2A2A30; line-height: 1.5;
+  }
+  .step li::before {
+    content: ''; flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #3D7BFF; margin-top: 8px;
+  }
+  .step b { color: #0A0A0C; font-weight: 700; }
+
+  /* ─── FINAL CTA ─────────────────────────────────────────── */
+  .final {
+    padding: 80px 24px 100px; background: #fff;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .final::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(55% 55% at 50% 0%, rgba(61,123,255,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .final h2 {
+    font-size: clamp(44px, 7vw, 84px);
+    font-weight: 900; letter-spacing: -0.05em; line-height: 0.95;
+    color: #0A0A0C; margin-bottom: 16px;
+  }
+  .final h2 em {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+  }
+  .final p { font-size: 17px; color: #6B6B75; margin-bottom: 28px; font-weight: 500; }
+  .final .btn-primary { font-size: 16px; padding: 14px 26px; }
+
+  /* ─── FOOTER ────────────────────────────────────────────── */
+  footer {
+    background: #0A0A0C; color: rgba(255,255,255,0.55);
+    padding: 48px 32px 28px; font-size: 13px;
+  }
+  .foot-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .foot-brand { display: flex; align-items: center; gap: 9px; }
+  .foot-brand .nav-glyph path { fill: #fff; }
+  .foot-brand .nav-wordmark { color: #fff; }
+  .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .foot-links a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+  .foot-links a:hover { color: #fff; }
+  .foot-disclaimer {
+    max-width: 1180px; margin: 24px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    font-size: 11.5px; color: rgba(255,255,255,0.40);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 120px 22px 50px; }
+    .step { gap: 14px; padding: 24px 0; }
+    .step-num { font-size: 30px; min-width: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+      <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#0A0A0C"/>
+    </svg>
+    <span class="nav-wordmark">pinned</span>
+  </a>
+  <a href="/" class="btn-primary">
+    Get it
+    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">How it works</div>
+    <h1>Five screens.<br><em>One job each.</em></h1>
+    <p>No menus to memorize. Every page in Pinned does one specific thing, really well.</p>
+  </div>
+</section>
+
+<!-- ─── STEPS ─── -->
+<section class="stage">
+
+  <div class="step">
+    <div class="step-num">01</div>
+    <div class="step-body">
+      <div class="kicker">Pinned (home)</div>
+      <h2>Your daily home.</h2>
+      <p>Every peptide you're running, all on one screen. Each card shows what to take, when it's due, and how to draw it. One tap to log a dose; the card greys out and shows when the next dose is coming.</p>
+      <ul>
+        <li>Big countdown to your next dose</li>
+        <li>One-tap logging — no menus, no forms</li>
+        <li>Streak counter so you don't skip days</li>
+        <li>Site-rotation warnings when you're overusing one spot</li>
+        <li>Quick scan-vial button for new bottles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">02</div>
+    <div class="step-body">
+      <div class="kicker">Calculator</div>
+      <h2>The math, done right.</h2>
+      <p>Tell it your vial size and your dose. It tells you exactly how much water to add and which line to draw to on the syringe. No spreadsheets, no guesswork, no mixing up mL with units.</p>
+      <ul>
+        <li><b>Calculate water</b> — picks a clean syringe tick (10, 15, 20 u) and gives you the exact water amount</li>
+        <li><b>Calculate units</b> — for vials you've already mixed</li>
+        <li>"Suggest easiest mix" snaps the water amount to a round draw when possible</li>
+        <li><b>Stack &amp; blend mode</b> — multi-peptide vial math, automated</li>
+        <li>Warns you when a dose won't fit your selected syringe</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">03</div>
+    <div class="step-body">
+      <div class="kicker">Tracker</div>
+      <h2>Every dose. Every vial.</h2>
+      <p>Three tabs in one screen: <b>History</b>, <b>Body</b>, and <b>Inventory</b>. Adherence, streaks, dose-by-dose history, where you injected, and how many doses are left in each vial.</p>
+      <ul>
+        <li><b>History</b> — every dose grouped by day, with site and time</li>
+        <li><b>Body</b> — anatomical heatmap showing which sites are cooling down vs. overused</li>
+        <li><b>Inventory</b> — vial-by-vial countdown to "use by" (28-day shelf life), with vendor + lot info</li>
+        <li>Scan a vial label to add it; we'll pull the vendor grade automatically</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">04</div>
+    <div class="step-body">
+      <div class="kicker">Coach</div>
+      <h2>AI that knows your stack.</h2>
+      <p>Powered by Claude. Ask anything about your peptides — timing, side effects, stacking, sourcing, cycling. It already knows what you're running, what you've logged, and what's in your fridge, so the answers are about <em>your</em> protocol, not generic advice.</p>
+      <ul>
+        <li>Trained on the latest peptide research</li>
+        <li>Reads your stack + recent doses + vial inventory automatically</li>
+        <li>Stays in scope — won't pretend to be your doctor</li>
+        <li>Free to try. Upgrade if you want unlimited messages</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">05</div>
+    <div class="step-body">
+      <div class="kicker">Library</div>
+      <h2>50+ peptides. Curated stacks.</h2>
+      <p>Browse every major peptide with plain-English explanations. Mechanism, typical dose, half-life, recommended timing, and risks — all written for humans, not biochemists.</p>
+      <ul>
+        <li>Search and filter by goal (healing, muscle, sleep, longevity, etc.)</li>
+        <li>Tap any peptide for its full profile</li>
+        <li>Curated stacks (Wolverine, Cortex, Sleep &amp; Repair, more) load straight into Today</li>
+        <li>Tap a stack to see which peptides go in and how to schedule them</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final">
+  <div class="final-inner">
+    <h2>Now you<br><em>know it all.</em></h2>
+    <p>Open Pinned. Add your first peptide. Takes about 30 seconds.</p>
+    <a href="/" class="btn-primary">
+      Get Pinned
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="foot-inner">
+    <a href="/" class="foot-brand">
+      <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+        <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#fff"/>
+      </svg>
+      <span class="nav-wordmark">pinned</span>
+    </a>
+    <div class="foot-links">
+      <a href="/howitworks">How it works</a>
+      <a href="/faq">FAQ</a>
+      <a href="mailto:hello@pinned.fit">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+  <div class="foot-disclaimer">
+    Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide. © 2026 Pinned.
+  </div>
+</footer>
+
+</body>
+</html>

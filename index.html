@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pinned — Peptide tracking, reimagined</title>
-<meta name="description" content="Scan any vial label and see its independent purity rating before you reconstitute. Track every dose. Get an AI optimizer that scores your stack and tells you exactly what to fix. The peptide app serious users have been waiting for.">
-<meta property="og:title" content="Pinned — Peptide tracking, reimagined">
-<meta property="og:description" content="Scan vials for vendor trust ratings. Track every dose. Get an AI optimizer that scores your stack and tells you what to fix.">
+<title>Pinned — The peptide app.</title>
+<meta name="description" content="Scan it. Track it. Win it. The peptide app, simplified.">
+<meta property="og:title" content="Pinned — Peptides, simplified.">
+<meta property="og:description" content="Scan it. Track it. Win it. One app. Zero spreadsheets.">
 <meta property="og:image" content="https://pinned.fit/img/og.png">
 <meta property="og:url" content="https://pinned.fit">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,8 +21,7 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', system-ui, -apple-system, "SF Pro Text", sans-serif;
-    background: #FFFFFF;
-    color: #0A0A0C;
+    background: #FFFFFF; color: #0A0A0C;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -35,23 +34,18 @@
 
   :root {
     --blue:        #3D7BFF;
-    --blue-dark:   #2A5CE8;
-    --blue-soft:   rgba(61,123,255,0.08);
     --purple:      #7C5CFF;
     --ink:         #0A0A0C;
     --ink-2:       #2A2A30;
     --muted:       #6B6B75;
     --faint:       #B0B0B8;
     --hairline:    #ECECEF;
-    --hairline-2:  #F4F4F6;
     --surface:     #FAFAFB;
-    --surface-2:   #F4F4F6;
     --good:        #1F8F66;
-    --warn:        #E08234;
     --serif:       'Instrument Serif', 'Times New Roman', Georgia, serif;
   }
 
-  /* ─── PHONE FRAME (reusable) ────────────────────────── */
+  /* ─── PHONE FRAME ────────────────────────────────────── */
   .phone {
     position: relative;
     border-radius: 46px;
@@ -64,39 +58,31 @@
       0 30px 60px -20px rgba(15,15,30,0.40),
       0 60px 120px -30px rgba(61,123,255,0.18);
     aspect-ratio: 9 / 19.5;
-    width: 100%;
-    max-width: 320px;
+    width: 100%; max-width: 320px;
   }
   .phone-screen {
     width: 100%; height: 100%;
-    border-radius: 36px;
-    overflow: hidden;
-    background: #FFFFFF;
-    position: relative;
+    border-radius: 36px; overflow: hidden;
+    background: #FFFFFF; position: relative;
   }
   .phone-screen img {
     width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    object-fit: cover; object-position: top center;
     display: block;
   }
   .phone::before {
-    content: '';
-    position: absolute;
+    content: ''; position: absolute;
     top: 18px; left: 50%; transform: translateX(-50%);
     width: 92px; height: 28px;
-    background: #0A0A0C;
-    border-radius: 14px;
-    z-index: 2;
+    background: #0A0A0C; border-radius: 14px; z-index: 2;
   }
 
-  /* ─── NAV ─────────────────────────────────────────── */
+  /* ─── NAV ────────────────────────────────────────────── */
   nav {
     position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
     z-index: 100;
     height: 56px;
     display: flex; align-items: center; justify-content: space-between;
-    gap: 28px;
     padding: 0 12px 0 22px;
     background: rgba(255,255,255,0.78);
     backdrop-filter: blur(20px) saturate(180%);
@@ -104,8 +90,7 @@
     border: 1px solid rgba(10,10,12,0.06);
     border-radius: 999px;
     box-shadow: 0 2px 24px -8px rgba(15,15,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
-    width: calc(100% - 32px);
-    max-width: 1000px;
+    width: calc(100% - 32px); max-width: 720px;
   }
   .nav-logo { display: flex; align-items: center; gap: 9px; }
   .nav-glyph { width: 14px; height: 24px; flex-shrink: 0; }
@@ -114,26 +99,15 @@
     font-size: 18px; font-weight: 900; letter-spacing: -0.045em;
     color: var(--ink); text-transform: lowercase; line-height: 1;
   }
-  .nav-links {
-    display: flex; align-items: center; gap: 28px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 13.5px; font-weight: 500; color: var(--muted);
-    transition: color 0.15s;
-  }
-  .nav-links a:hover { color: var(--ink); }
-
   .btn-primary {
     display: inline-flex; align-items: center; gap: 6px;
-    padding: 9px 18px;
+    padding: 10px 20px;
     border-radius: 999px;
     background: var(--ink); color: #fff;
-    font-size: 13.5px; font-weight: 600; letter-spacing: -0.005em;
+    font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
     transition: transform 0.12s ease, box-shadow 0.2s, background 0.2s;
     box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 16px -6px rgba(0,0,0,0.35);
-    cursor: pointer; border: none;
-    white-space: nowrap;
+    cursor: pointer; border: none; white-space: nowrap;
   }
   .btn-primary:hover {
     transform: translateY(-1px);
@@ -141,48 +115,44 @@
     box-shadow: 0 10px 24px -6px rgba(0,0,0,0.40);
   }
 
-  /* ─── HERO ──────────────────────────────────────────── */
+  /* ─── HERO ───────────────────────────────────────────── */
   .hero {
     position: relative;
-    padding: 140px 32px 80px;
+    padding: 160px 32px 100px;
     overflow: hidden;
     background: #FFFFFF;
-    border-bottom: 1px solid var(--hairline);
   }
   .hero::before {
-    /* Soft mesh gradient — blue + purple radials, on white */
     content: ''; position: absolute; inset: 0;
     background:
-      radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.18) 0%, rgba(61,123,255,0) 60%),
-      radial-gradient(40% 50% at 20% 100%, rgba(124,92,255,0.12) 0%, rgba(124,92,255,0) 70%),
+      radial-gradient(60% 60% at 80% 0%, rgba(61,123,255,0.20) 0%, rgba(61,123,255,0) 60%),
+      radial-gradient(40% 50% at 20% 100%, rgba(124,92,255,0.14) 0%, rgba(124,92,255,0) 70%),
       radial-gradient(30% 35% at 50% 60%, rgba(61,123,255,0.06) 0%, rgba(61,123,255,0) 70%);
     pointer-events: none;
   }
   .hero::after {
-    /* Subtle dot grid */
     content: ''; position: absolute; inset: 0;
     background-image: radial-gradient(rgba(10,10,12,0.06) 1px, transparent 1.5px);
     background-size: 22px 22px;
     mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 30%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 30%, transparent 75%);
-    pointer-events: none;
-    opacity: 0.7;
+    pointer-events: none; opacity: 0.7;
   }
   .hero-inner {
     position: relative; z-index: 1;
     max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center;
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center;
   }
 
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 5px 11px 5px 8px;
+    padding: 6px 14px 6px 10px;
     border-radius: 999px;
     background: #fff;
     border: 1px solid var(--hairline);
-    font-size: 11.5px; font-weight: 600; color: var(--ink-2);
+    font-size: 12px; font-weight: 700; color: var(--ink-2);
     letter-spacing: 0.01em;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
     box-shadow: 0 1px 2px rgba(15,15,30,0.04);
   }
   .hero-eyebrow .dot {
@@ -195,12 +165,11 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.55; transform: scale(0.85); }
   }
-  .hero-eyebrow strong { color: var(--ink); font-weight: 700; }
 
   .hero h1 {
-    font-size: clamp(44px, 5.5vw, 76px);
-    font-weight: 800; letter-spacing: -0.045em; line-height: 0.98;
-    color: var(--ink); margin-bottom: 24px;
+    font-size: clamp(72px, 11vw, 148px);
+    font-weight: 900; letter-spacing: -0.06em; line-height: 0.88;
+    color: var(--ink); margin-bottom: 28px;
   }
   .hero h1 em {
     font-family: var(--serif);
@@ -208,22 +177,24 @@
     background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
   .hero-sub {
-    font-size: 18.5px; line-height: 1.55;
-    color: var(--muted); max-width: 480px;
-    margin-bottom: 36px;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.25; color: var(--ink-2);
+    font-weight: 700; letter-spacing: -0.02em;
+    max-width: 520px;
+    margin-bottom: 40px;
   }
+  .hero-sub b { color: var(--ink); font-weight: 800; }
 
-  /* CTA group */
+  /* CTA */
   .cta-row {
     display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
-    margin-bottom: 32px;
   }
   .store-btn {
     display: inline-flex; align-items: center; gap: 11px;
-    padding: 13px 22px 13px 18px;
+    padding: 14px 22px 14px 18px;
     border-radius: 14px;
     background: var(--ink); color: #fff;
     transition: transform 0.12s, box-shadow 0.2s;
@@ -231,34 +202,10 @@
   }
   .store-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 32px -10px rgba(15,15,30,0.40); }
   .store-btn-label { display: flex; flex-direction: column; line-height: 1.1; }
-  .store-btn-label .top { font-size: 10.5px; font-weight: 500; opacity: 0.7; letter-spacing: 0.01em; }
-  .store-btn-label .name { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+  .store-btn-label .top { font-size: 11px; font-weight: 500; opacity: 0.7; letter-spacing: 0.01em; }
+  .store-btn-label .name { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
   .store-btn.alt { background: #fff; color: var(--ink); border: 1px solid var(--hairline); box-shadow: 0 6px 18px -8px rgba(15,15,30,0.10); }
   .store-btn.alt:hover { box-shadow: 0 14px 32px -10px rgba(15,15,30,0.18); }
-
-  /* Reviews mini-row */
-  .hero-proof {
-    display: flex; align-items: center; gap: 14px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .hero-proof .stars { display: inline-flex; gap: 1px; }
-  .hero-proof .stars svg { width: 14px; height: 14px; }
-  .hero-proof .avatars { display: inline-flex; }
-  .hero-proof .avatars .a {
-    width: 26px; height: 26px; border-radius: 50%;
-    border: 2px solid #fff;
-    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
-    margin-left: -8px;
-    box-shadow: 0 2px 6px rgba(15,15,30,0.10);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 700; color: #fff;
-  }
-  .hero-proof .avatars .a:first-child { margin-left: 0; }
-  .hero-proof .avatars .a:nth-child(2) { background: linear-gradient(135deg, #1F8F66, #3D7BFF); }
-  .hero-proof .avatars .a:nth-child(3) { background: linear-gradient(135deg, #E08234, #7C5CFF); }
-  .hero-proof .avatars .a:nth-child(4) { background: linear-gradient(135deg, #7C5CFF, #FF5C8D); }
-  .hero-proof strong { color: var(--ink); font-weight: 700; }
 
   /* Hero visual */
   .hero-visual {
@@ -275,198 +222,176 @@
     0%, 100% { transform: rotate(-2deg) translateY(0); }
     50% { transform: rotate(-2deg) translateY(-12px); }
   }
-  /* Floating callouts around the phone */
+
+  /* Hero floating toasts */
   .callout {
     position: absolute;
-    background: #fff;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px 10px 10px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
     border: 1px solid var(--hairline);
     border-radius: 14px;
-    padding: 10px 14px;
-    box-shadow: 0 12px 32px -8px rgba(15,15,30,0.18), 0 2px 4px rgba(15,15,30,0.04);
-    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 18px 40px -14px rgba(15,15,30,0.18), 0 2px 6px -2px rgba(15,15,30,0.06);
     font-size: 13px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.005em; white-space: nowrap;
+    opacity: 0;
     z-index: 3;
-    animation: floatY 6s ease-in-out infinite;
   }
-  .callout .dot-ic {
-    width: 28px; height: 28px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
+  .callout .ic {
+    width: 30px; height: 30px; border-radius: 9px;
+    display: inline-flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .callout .meta { color: var(--muted); font-weight: 500; font-size: 11.5px; line-height: 1.2; margin-top: 1px; }
-  .callout .meta strong { color: var(--ink); font-weight: 700; }
-  .callout-1 { top: 12%; left: -6%; animation-delay: 0s; }
-  .callout-2 { top: 48%; right: -10%; animation-delay: 1.5s; }
-  .callout-3 { bottom: 8%; left: -2%; animation-delay: 3s; }
+  .callout .meta {
+    display: block;
+    font-size: 11.5px; font-weight: 500; color: var(--muted);
+    letter-spacing: 0.005em;
+    margin-top: 1px;
+  }
+  .callout .meta strong { color: var(--ink-2); font-weight: 700; }
 
-  /* Logos / press strip */
-  .press {
+  .callout-1 { top: 8%; left: -4%;  animation: popIn 0.6s cubic-bezier(.2,.9,.3,1.2) 0.6s forwards, floatA 6s ease-in-out 1.2s infinite; }
+  .callout-2 { top: 44%; right: -10%; animation: popIn 0.6s cubic-bezier(.2,.9,.3,1.2) 1.4s forwards, floatB 7s ease-in-out 2.0s infinite; }
+  .callout-3 { bottom: 6%; left: -2%;  animation: popIn 0.6s cubic-bezier(.2,.9,.3,1.2) 2.2s forwards, floatA 6.5s ease-in-out 2.8s infinite; }
+
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.8) translateY(8px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes floatA {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+  }
+  @keyframes floatB {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+  }
+
+  /* ─── BIG 3 (features) ──────────────────────────────── */
+  .big3 {
+    padding: 100px 32px 110px;
+    background: var(--surface);
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
-    padding: 28px 32px;
-    background: #FAFAFB;
   }
-  .press-inner {
-    max-width: 1180px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between; gap: 32px;
-    flex-wrap: wrap;
+  .big3-inner { max-width: 1180px; margin: 0 auto; }
+  .big3-head { text-align: center; margin-bottom: 64px; }
+  .big3-head h2 {
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 900; letter-spacing: -0.055em; line-height: 0.92;
+    color: var(--ink);
   }
-  .press-label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--faint); font-weight: 600;
-  }
-  .press-logos {
-    display: flex; gap: 36px; align-items: center; flex-wrap: wrap;
-    color: var(--faint);
-  }
-  .press-logos span {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800; letter-spacing: -0.03em; font-size: 18px;
-    opacity: 0.65;
-  }
-
-  /* ─── SECTION COMMON ──────────────────────────────── */
-  section { padding: 110px 32px; }
-  .section-inner { max-width: 1180px; margin: 0 auto; }
-  .section-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11.5px; font-weight: 700; color: var(--blue);
-    text-transform: uppercase; letter-spacing: 0.12em;
-    margin-bottom: 16px;
-  }
-  .section-eyebrow .pip {
-    width: 5px; height: 5px; border-radius: 50%; background: var(--blue);
-  }
-  .section-title {
-    font-size: clamp(34px, 4vw, 56px);
-    font-weight: 800; letter-spacing: -0.045em; line-height: 1.0;
-    color: var(--ink); margin-bottom: 20px;
-    max-width: 760px;
-  }
-  .section-title em {
+  .big3-head h2 em {
     font-family: var(--serif); font-style: italic; font-weight: 400;
-    color: var(--blue); letter-spacing: -0.02em;
+    color: var(--blue); letter-spacing: -0.025em;
   }
-  .section-sub {
-    font-size: 18px; color: var(--muted); line-height: 1.6;
-    max-width: 600px; margin-bottom: 64px;
+  .big3-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
   }
-
-  /* ─── PILLARS ─────────────────────────────────────── */
-  .pillars { background: #fff; }
-  .pillars-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  @media (max-width: 880px) {
+    .big3-grid { grid-template-columns: 1fr; }
   }
-  .pillar {
-    padding: 40px 30px 36px;
-    border-radius: 26px;
+  .big3-card {
     background: #fff;
     border: 1px solid var(--hairline);
+    border-radius: 28px;
+    padding: 36px 32px 40px;
+    position: relative;
     transition: transform 0.2s ease, box-shadow 0.25s, border-color 0.25s;
-    position: relative; overflow: hidden;
-    text-align: left;
   }
-  .pillar::before {
-    content: ''; position: absolute; inset: 0;
-    background: var(--pillar-glow, transparent);
-    opacity: 0; transition: opacity 0.3s;
-    pointer-events: none;
-  }
-  .pillar:hover {
+  .big3-card:hover {
     transform: translateY(-4px);
     border-color: rgba(61,123,255,0.30);
     box-shadow: 0 24px 50px -16px rgba(61,123,255,0.20);
   }
-  .pillar:hover::before { opacity: 1; }
-  .pillar-icon {
-    width: 64px; height: 64px; border-radius: 18px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 26px;
-    position: relative; z-index: 1;
+  .big3-num {
+    font-family: var(--serif);
+    font-size: 28px; font-style: italic;
+    color: var(--faint);
+    margin-bottom: 18px;
   }
-  .pillar h3 {
-    font-size: clamp(22px, 2.1vw, 28px);
-    font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
-    color: var(--ink); margin-bottom: 10px;
-    position: relative; z-index: 1;
+  .big3-card h3 {
+    font-size: clamp(34px, 3.6vw, 48px);
+    font-weight: 900; letter-spacing: -0.045em; line-height: 0.95;
+    color: var(--ink); margin-bottom: 12px;
   }
-  .pillar p {
-    font-size: 15.5px; color: var(--muted); line-height: 1.5;
-    font-weight: 500;
-    position: relative; z-index: 1;
+  .big3-card p {
+    font-size: 17px; line-height: 1.4;
+    color: var(--muted); font-weight: 500;
   }
-  .pillar .tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    margin-top: 18px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: var(--surface-2);
-    font-size: 11.5px; font-weight: 700;
-    color: var(--ink-2);
-    letter-spacing: 0.02em;
-    position: relative; z-index: 1;
+  .big3-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(61,123,255,0.10), rgba(124,92,255,0.10));
+    border: 1px solid rgba(61,123,255,0.18);
   }
-  .pillar .tag .tdot { width: 5px; height: 5px; border-radius: 50%; }
+  .big3-icon svg { display: block; }
 
-  /* ─── DEEP DIVE SHOWCASE ──────────────────────────── */
-  .showcase { background: #FAFAFB; }
-  .showcase.alt { background: #FFFFFF; }
-  .showcase-inner {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-    align-items: center;
+  /* ─── SHOWCASE — three phones side by side ──────────── */
+  .showcase {
+    padding: 110px 32px;
+    background: #fff;
+    overflow: hidden;
   }
-  .showcase-inner.reverse { direction: rtl; }
-  .showcase-inner.reverse > * { direction: ltr; }
-  .showcase-text { padding: 12px 0; }
-  .showcase-text h3 {
-    font-size: clamp(32px, 3.4vw, 46px);
-    font-weight: 800; letter-spacing: -0.045em; line-height: 1.05;
+  .showcase-inner { max-width: 1280px; margin: 0 auto; }
+  .showcase-head { text-align: center; margin-bottom: 72px; }
+  .showcase-head h2 {
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 900; letter-spacing: -0.055em; line-height: 0.92;
     color: var(--ink); margin-bottom: 18px;
   }
-  .showcase-text h3 em {
+  .showcase-head h2 em {
     font-family: var(--serif); font-style: italic; font-weight: 400;
     background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
-  .showcase-text > p {
-    font-size: 17px; color: var(--muted); line-height: 1.65;
-    margin-bottom: 28px; max-width: 480px;
+  .showcase-head p {
+    font-size: 18px; color: var(--muted); font-weight: 500;
+    max-width: 520px; margin: 0 auto;
   }
-  .showcase-bullets {
-    list-style: none; display: flex; flex-direction: column; gap: 14px;
+  .showcase-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; align-items: end;
+    justify-items: center;
+  }
+  .showcase-cell {
+    text-align: center;
+    width: 100%;
+  }
+  .showcase-cell .phone-wrap {
     margin-bottom: 28px;
-  }
-  .showcase-bullets li {
-    display: flex; align-items: flex-start; gap: 12px;
-    font-size: 15px; color: var(--ink-2); line-height: 1.5;
-  }
-  .showcase-bullets li svg { flex-shrink: 0; margin-top: 3px; }
-  .showcase-bullets b { color: var(--ink); font-weight: 700; }
-
-  .showcase-phone {
-    display: flex; justify-content: center; align-items: center;
-    position: relative;
-  }
-  .showcase-phone::before {
-    /* Glow behind phone */
-    content: ''; position: absolute; inset: -8% -10%;
-    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(61,123,255,0.10), transparent 70%);
-    pointer-events: none; z-index: 0;
-  }
-  .showcase-phone .phone {
-    z-index: 1;
-    transform: rotate(0deg);
+    transform: translateY(0);
     transition: transform 0.4s ease;
   }
-  .showcase-phone:hover .phone { transform: translateY(-6px); }
+  .showcase-cell:hover .phone-wrap { transform: translateY(-8px); }
+  .showcase-cell .phone {
+    margin: 0 auto;
+    transform: rotate(0);
+  }
+  .showcase-cell.tilt-l .phone { transform: rotate(-2deg); }
+  .showcase-cell.tilt-r .phone { transform: rotate(2deg); }
+  .showcase-cell h4 {
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 900; letter-spacing: -0.04em; line-height: 1;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .showcase-cell p {
+    font-size: 15px; color: var(--muted); line-height: 1.4;
+    max-width: 240px; margin: 0 auto;
+  }
 
-  /* ─── COACH (DARK MOMENT) ─────────────────────────── */
+  /* ─── COACH dark moment ─────────────────────────────── */
   .coach {
     background: linear-gradient(165deg, #0A0A1E 0%, #14143A 50%, #1A1F4A 100%);
-    padding: 130px 32px;
+    padding: 120px 32px;
     position: relative; overflow: hidden;
+    text-align: center;
   }
   .coach::before {
     content: ''; position: absolute; inset: 0;
@@ -474,253 +399,54 @@
       radial-gradient(50% 50% at 80% 0%, rgba(124,92,255,0.20), transparent 60%),
       radial-gradient(40% 40% at 10% 100%, rgba(61,123,255,0.18), transparent 70%);
   }
-  .coach::after {
-    content: ''; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
-    pointer-events: none;
+  .coach-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+  .coach-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: #8FB1FF;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    margin-bottom: 22px;
   }
-  .coach-inner {
-    position: relative; z-index: 1;
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  .coach-eyebrow .pip {
+    width: 5px; height: 5px; border-radius: 50%; background: #8FB1FF;
   }
-  .coach .section-eyebrow { color: #8FB1FF; }
-  .coach .section-eyebrow .pip { background: #8FB1FF; }
   .coach h2 {
-    font-size: clamp(34px, 4vw, 54px);
-    font-weight: 800; letter-spacing: -0.045em; line-height: 1.02;
-    color: #fff; margin-bottom: 18px;
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 900; letter-spacing: -0.06em; line-height: 0.9;
+    color: #fff; margin-bottom: 22px;
   }
   .coach h2 em {
     font-family: var(--serif); font-style: italic; font-weight: 400;
-    background: linear-gradient(135deg, #8FB1FF 0%, #C7B6FF 100%);
+    background: linear-gradient(135deg, #8FB1FF 0%, #C7B5FF 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
   }
-  .coach > .coach-inner > div > p.lede {
-    font-size: 18px; color: rgba(255,255,255,0.62); line-height: 1.65;
-    margin-bottom: 32px; max-width: 460px;
-  }
-  .coach-feats { display: flex; flex-direction: column; gap: 14px; }
-  .coach-feat {
-    display: flex; gap: 14px; align-items: flex-start;
-    padding: 16px 18px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(10px);
-  }
-  .coach-feat-ic {
-    width: 36px; height: 36px; border-radius: 10px;
-    background: rgba(61,123,255,0.18);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .coach-feat .t { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-  .coach-feat .d { font-size: 13px; color: rgba(255,255,255,0.50); line-height: 1.5; }
-
-  /* Chat mockup */
-  .coach-chat {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 28px;
-    padding: 26px;
-    backdrop-filter: blur(18px);
-    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.50);
-  }
-  .coach-chat-head {
-    display: flex; align-items: center; gap: 12px;
-    padding-bottom: 20px; margin-bottom: 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-  .coach-avatar {
-    width: 38px; height: 38px; border-radius: 50%;
-    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; color: #fff; font-weight: 700;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(61,123,255,0.30);
-  }
-  .coach-chat-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.2; }
-  .coach-chat-status { font-size: 11.5px; color: rgba(31,143,102,0.92); font-weight: 500; line-height: 1.2; margin-top: 2px; }
-  .bubble {
-    max-width: 86%; padding: 13px 16px; border-radius: 18px;
-    margin-bottom: 10px; font-size: 13.5px; line-height: 1.55;
-  }
-  .bubble.user {
-    background: linear-gradient(135deg, #3D7BFF, #5B4DFF);
-    color: #fff; margin-left: auto; border-radius: 18px 18px 5px 18px;
-    box-shadow: 0 6px 20px -6px rgba(61,123,255,0.40);
-  }
-  .bubble.ai {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.88);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 5px 18px 18px 18px;
-  }
-  .bubble.ai b { color: #fff; font-weight: 700; }
-  .typing { display: inline-flex; gap: 4px; align-items: center; padding: 2px 6px; }
-  .typing span {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(255,255,255,0.45);
-    animation: typing 1.2s infinite;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typing {
-    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-    30% { opacity: 1; transform: translateY(-3px); }
-  }
-
-  /* ─── BIG STATS ──────────────────────────────────── */
-  .stats {
-    background: #FFFFFF;
-    padding: 100px 32px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .stats-inner {
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    text-align: center;
-  }
-  .stat {
-    padding: 24px 16px;
-    border-right: 1px solid var(--hairline);
-  }
-  .stat:last-child { border-right: none; }
-  .stat .num {
-    font-size: clamp(40px, 4.4vw, 64px);
-    font-weight: 800; letter-spacing: -0.045em;
-    color: var(--ink); line-height: 1; margin-bottom: 8px;
-  }
-  .stat .num em {
-    font-family: var(--serif); font-style: italic; font-weight: 400;
-    background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .stat .lbl { font-size: 13.5px; color: var(--muted); font-weight: 500; }
-
-  /* ─── TESTIMONIALS ───────────────────────────────── */
-  .testimonials { background: #FAFAFB; }
-  .test-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
-  }
-  .test-card {
-    padding: 28px 26px;
-    border-radius: 22px;
-    background: #fff;
-    border: 1px solid var(--hairline);
-    display: flex; flex-direction: column; gap: 18px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .test-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 40px -12px rgba(15,15,30,0.10);
-  }
-  .test-stars { display: inline-flex; gap: 2px; }
-  .test-stars svg { width: 14px; height: 14px; }
-  .test-card blockquote {
-    font-size: 15.5px; color: var(--ink-2); line-height: 1.55;
+  .coach p {
+    font-size: clamp(18px, 2vw, 22px);
+    color: rgba(255,255,255,0.75); line-height: 1.4;
+    max-width: 560px; margin: 0 auto;
     font-weight: 500;
   }
-  .test-card blockquote::before { content: '"'; font-family: var(--serif); color: var(--blue); font-size: 1.2em; }
-  .test-card blockquote::after  { content: '"'; font-family: var(--serif); color: var(--blue); font-size: 1.2em; }
-  .test-author {
-    display: flex; align-items: center; gap: 10px;
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid var(--hairline-2);
-  }
-  .test-author .av {
-    width: 34px; height: 34px; border-radius: 50%;
-    background: linear-gradient(135deg, #3D7BFF, #7C5CFF);
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 13px; font-weight: 700;
-  }
-  .test-author .meta .n { font-size: 13.5px; font-weight: 700; color: var(--ink); line-height: 1.2; }
-  .test-author .meta .r { font-size: 12px; color: var(--muted); line-height: 1.2; margin-top: 2px; }
 
-  /* ─── FAQ ──────────────────────────────────────── */
-  .faq { background: #FFFFFF; }
-  .faq-inner {
-    max-width: 800px; margin: 0 auto;
-  }
-  .faq h2 {
-    font-size: clamp(34px, 3.6vw, 48px);
-    font-weight: 800; letter-spacing: -0.045em; line-height: 1.05;
-    color: var(--ink); margin-bottom: 14px; text-align: center;
-  }
-  .faq h2 em {
-    font-family: var(--serif); font-style: italic; font-weight: 400;
-    color: var(--blue);
-  }
-  .faq .lede {
-    font-size: 17px; color: var(--muted); line-height: 1.55;
-    text-align: center; margin-bottom: 56px;
-    max-width: 540px; margin-left: auto; margin-right: auto;
-  }
-  .faq-list { display: flex; flex-direction: column; gap: 10px; }
-  details {
-    background: #FAFAFB;
-    border: 1px solid var(--hairline);
-    border-radius: 16px;
-    padding: 20px 22px;
-    transition: background 0.15s;
-  }
-  details[open] {
-    background: #fff;
-    box-shadow: 0 10px 30px -12px rgba(15,15,30,0.10);
-    border-color: rgba(61,123,255,0.20);
-  }
-  summary {
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer; list-style: none;
-    font-size: 16px; font-weight: 600; color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-  summary::-webkit-details-marker { display: none; }
-  summary .chev {
-    width: 22px; height: 22px; border-radius: 50%;
-    background: var(--surface-2);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-  }
-  details[open] summary .chev { transform: rotate(180deg); background: var(--blue); }
-  details[open] summary .chev svg path { stroke: #fff; }
-  details p {
-    font-size: 14.5px; color: var(--muted); line-height: 1.65;
-    margin-top: 14px;
-  }
-
-  /* ─── FINAL CTA ─────────────────────────────────── */
+  /* ─── FINAL CTA ─────────────────────────────────────── */
   .final {
-    padding: 130px 32px 100px;
-    background:
-      radial-gradient(50% 50% at 50% 0%, rgba(61,123,255,0.15) 0%, rgba(61,123,255,0) 70%),
-      radial-gradient(40% 40% at 80% 80%, rgba(124,92,255,0.10) 0%, rgba(124,92,255,0) 70%),
-      #FFFFFF;
-    text-align: center; position: relative; overflow: hidden;
-    border-top: 1px solid var(--hairline);
+    padding: 120px 32px 140px;
+    background: #fff;
+    text-align: center;
+    position: relative; overflow: hidden;
   }
   .final::before {
     content: ''; position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(10,10,12,0.06) 1px, transparent 1.5px);
-    background-size: 22px 22px;
-    mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 75%);
-    opacity: 0.55;
+    background:
+      radial-gradient(55% 55% at 50% 0%, rgba(61,123,255,0.16) 0%, rgba(61,123,255,0) 70%),
+      radial-gradient(35% 50% at 50% 100%, rgba(124,92,255,0.10) 0%, rgba(124,92,255,0) 70%);
+    pointer-events: none;
   }
-  .final-inner { position: relative; max-width: 720px; margin: 0 auto; z-index: 1; }
+  .final-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
   .final h2 {
-    font-size: clamp(40px, 5vw, 68px);
-    font-weight: 800; letter-spacing: -0.045em; line-height: 1.0;
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 900; letter-spacing: -0.06em; line-height: 0.9;
     color: var(--ink); margin-bottom: 20px;
   }
   .final h2 em {
@@ -728,99 +454,73 @@
     background: linear-gradient(135deg, #3D7BFF 0%, #7C5CFF 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
   }
   .final p {
-    font-size: 18px; color: var(--muted); line-height: 1.55;
-    max-width: 520px; margin: 0 auto 36px;
+    font-size: 20px; color: var(--muted); line-height: 1.4;
+    margin-bottom: 36px; font-weight: 500;
   }
   .final .cta-row { justify-content: center; }
   .final-foot {
-    margin-top: 22px; font-size: 13px; color: var(--muted);
-    display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 28px;
+    margin-top: 28px; flex-wrap: wrap;
+    color: var(--muted); font-size: 14px; font-weight: 600;
   }
-  .final-foot span { display: inline-flex; align-items: center; gap: 6px; }
+  .final-foot span {
+    display: inline-flex; align-items: center; gap: 6px;
+  }
 
-  /* ─── FOOTER ───────────────────────────────────── */
+  /* ─── FOOTER ────────────────────────────────────────── */
   footer {
-    background: #0A0A0C;
-    color: rgba(255,255,255,0.55);
-    padding: 60px 32px 24px;
+    background: #0A0A0C; color: rgba(255,255,255,0.55);
+    padding: 48px 32px 28px;
+    font-size: 13px;
   }
-  .foot-grid {
+  .foot-inner {
     max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px;
-    margin-bottom: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
   }
-  .foot-brand .logo { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
-  .foot-brand .logo .nav-glyph path { fill: #fff; }
-  .foot-brand .logo .nav-wordmark { color: #fff; }
-  .foot-brand p { font-size: 13.5px; line-height: 1.6; max-width: 280px; color: rgba(255,255,255,0.42); }
-  .foot-col h4 {
-    font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.3); font-weight: 700; margin-bottom: 16px;
-  }
-  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .foot-col a { font-size: 14px; color: rgba(255,255,255,0.62); transition: color 0.15s; }
-  .foot-col a:hover { color: #fff; }
-  .foot-bottom {
-    max-width: 1180px; margin: 0 auto;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 22px;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-    font-size: 12.5px; color: rgba(255,255,255,0.30);
-  }
-  .disclaimer-strip {
-    background: rgba(245,176,66,0.08); border-top: 1px solid rgba(245,176,66,0.14);
-    padding: 14px 32px;
-    font-size: 12px; color: rgba(255,255,255,0.42); text-align: center; line-height: 1.6;
-    max-width: 1180px; margin: 0 auto; border-radius: 12px; margin-top: 24px;
+  .foot-brand { display: flex; align-items: center; gap: 9px; }
+  .foot-brand .nav-glyph path { fill: #fff; }
+  .foot-brand .nav-wordmark { color: #fff; }
+  .foot-links { display: flex; gap: 24px; }
+  .foot-links a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+  .foot-links a:hover { color: #fff; }
+  .foot-disclaimer {
+    max-width: 1180px; margin: 24px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    font-size: 11.5px; color: rgba(255,255,255,0.40);
+    line-height: 1.6;
   }
 
-  /* ─── SCROLL ANIMATIONS ────────────────────────── */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  /* ─── Reveal animation ─────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal.d1 { transition-delay: 0.08s; }
-  .reveal.d2 { transition-delay: 0.16s; }
-  .reveal.d3 { transition-delay: 0.24s; }
-  .reveal.d4 { transition-delay: 0.32s; }
-  .reveal.d5 { transition-delay: 0.40s; }
-  .reveal.d6 { transition-delay: 0.48s; }
+  .reveal.d1 { transition-delay: 0.06s; }
+  .reveal.d2 { transition-delay: 0.14s; }
+  .reveal.d3 { transition-delay: 0.22s; }
 
-  /* ─── RESPONSIVE ──────────────────────────────── */
-  @media (max-width: 960px) {
-    nav { padding: 0 8px 0 18px; gap: 8px; }
-    .nav-links { display: none; }
-    .hero { padding: 110px 22px 60px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 60px; text-align: center; }
-    .hero-eyebrow { margin-left: auto; margin-right: auto; }
+  /* ─── Responsive ───────────────────────────────────── */
+  @media (max-width: 880px) {
+    .hero { padding: 130px 22px 70px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
     .hero-sub { margin-left: auto; margin-right: auto; }
     .cta-row { justify-content: center; }
-    .hero-proof { justify-content: center; }
-    .hero-visual { min-height: 540px; }
-    .pillars-grid { grid-template-columns: 1fr 1fr; }
-    .showcase-inner { grid-template-columns: 1fr; gap: 56px; }
-    .showcase-inner.reverse { direction: ltr; }
-    .showcase-phone { order: 1; }
-    .coach-inner { grid-template-columns: 1fr; gap: 56px; }
-    .stats-inner { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .stat { border-right: none; border-bottom: 1px solid var(--hairline); padding-bottom: 28px; }
-    .stat:nth-child(odd) { border-right: 1px solid var(--hairline); }
-    .stat:nth-last-child(-n+2) { border-bottom: none; }
-    .test-grid { grid-template-columns: 1fr; }
-    .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    section { padding: 80px 22px; }
-    .coach { padding: 100px 22px; }
-    .stats { padding: 80px 22px; }
-    .final { padding: 100px 22px 80px; }
-  }
-  @media (max-width: 520px) {
-    .pillars-grid { grid-template-columns: 1fr; }
-    .stats-inner { grid-template-columns: 1fr; }
-    .stat { border-right: none !important; }
-    .stat:nth-child(n) { border-right: none; }
-    .foot-grid { grid-template-columns: 1fr; }
-    .callout-1, .callout-3 { left: 4%; }
-    .callout-2 { right: 4%; }
+    .hero-visual { min-height: 480px; }
+
+    .big3 { padding: 80px 22px 90px; }
+    .big3-grid { grid-template-columns: 1fr; gap: 14px; }
+
+    .showcase { padding: 80px 22px; }
+    .showcase-row { grid-template-columns: 1fr; gap: 56px; }
+    .showcase-cell .phone { transform: rotate(0); }
+    .showcase-cell.tilt-l .phone, .showcase-cell.tilt-r .phone { transform: rotate(0); }
+
+    .coach { padding: 90px 22px; }
+
+    .final { padding: 90px 22px 100px; }
   }
 </style>
 </head>
@@ -834,13 +534,6 @@
     </svg>
     <span class="nav-wordmark">pinned</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#scanner">Scanner</a></li>
-    <li><a href="#optimizer">Optimizer</a></li>
-    <li><a href="#coach">AI Coach</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
   <a href="#download" class="btn-primary">
     Download
     <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M6 3l3 3-3 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -853,11 +546,11 @@
     <div class="hero-text">
       <div class="hero-eyebrow">
         <span class="dot"></span>
-        <span><strong>Now in private beta</strong> · iOS &amp; Android</span>
+        <span>Now in beta · iOS &amp; Android</span>
       </div>
-      <h1>Your peptides,<br><em>perfectly managed.</em></h1>
+      <h1>Peptides,<br><em>simplified.</em></h1>
       <p class="hero-sub">
-        Scan any vial to see its independent purity rating before you reconstitute. Track every dose. Get an AI optimizer that scores <em style="font-family:var(--serif); color:var(--ink); font-style:italic;">your</em> stack — and tells you exactly what to fix.
+        Scan it. Track it. Win it.<br>One app. Zero spreadsheets.
       </p>
       <div class="cta-row">
         <a href="#download" class="store-btn">
@@ -889,14 +582,13 @@
       <div class="hero-phone-wrap">
         <div class="phone">
           <div class="phone-screen">
-            <img src="img/today.png" alt="Pinned Today screen — your active protocol with stack cards, dose progress, and quick log">
+            <img src="img/today.png" alt="Pinned Today screen">
           </div>
         </div>
 
-        <!-- Floating callouts -->
         <div class="callout callout-1">
-          <div class="dot-ic" style="background: rgba(31,143,102,0.10);">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="2" width="8" height="10" rx="1.6" stroke="#1F8F66" stroke-width="1.6"/><circle cx="7" cy="7" r="2" stroke="#1F8F66" stroke-width="1.6"/><circle cx="7" cy="7" r="0.8" fill="#1F8F66"/></svg>
+          <div class="ic" style="background: rgba(61,123,255,0.12);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="4" width="11" height="8" rx="1.5" stroke="#3D7BFF" stroke-width="1.6"/><circle cx="8" cy="8" r="2.2" stroke="#3D7BFF" stroke-width="1.6"/><path d="M5 4l1-1.2h4L11 4" stroke="#3D7BFF" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <div>Vial scanned</div>
@@ -905,22 +597,22 @@
         </div>
 
         <div class="callout callout-2">
-          <div class="dot-ic" style="background: rgba(61,123,255,0.10);">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5l1.4 3.4L12 5l-2.6 2.5.6 3.5L7 9.5 4 11l.6-3.5L2 5l3.6-.1L7 1.5z" stroke="#3D7BFF" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <div class="ic" style="background: rgba(31,143,102,0.14);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.2 3.2L13 4.5" stroke="#1F8F66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <div>Stack score</div>
-            <div class="meta"><strong>87/100</strong> · 3 fixes found</div>
+            <div>Dose calculated</div>
+            <div class="meta"><strong>BPC-157</strong> · 8 units</div>
           </div>
         </div>
 
         <div class="callout callout-3">
-          <div class="dot-ic" style="background: rgba(124,92,255,0.12);">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 4h8v7l-4 1.5L3 11V4z" stroke="#7C5CFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 7h4" stroke="#7C5CFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div class="ic" style="background: rgba(124,92,255,0.14);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.6l1.7 4 4.3.4-3.3 2.8 1 4.2L8 10.7l-3.7 2.3 1-4.2L2 6l4.3-.4L8 1.6z" stroke="#7C5CFF" stroke-width="1.4" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <div>Inventory auto-tracked</div>
-            <div class="meta"><strong>3 vials</strong> · 28d stability</div>
+            <div>Dose logged</div>
+            <div class="meta"><strong>7-day streak</strong> · keep going</div>
           </div>
         </div>
       </div>
@@ -928,410 +620,120 @@
   </div>
 </section>
 
-<!-- ─── PILLARS ─── -->
-<section class="pillars" id="features">
-  <div class="section-inner">
-    <span class="section-eyebrow reveal"><span class="pip"></span>Six pillars</span>
-    <h2 class="section-title reveal">Everything you need.<br><em>Nothing you don't.</em></h2>
-
-    <div class="pillars-grid">
-      <div class="pillar reveal d1" style="--pillar-glow: radial-gradient(80% 60% at 100% 0%, rgba(61,123,255,0.10), transparent 60%);">
-        <div class="pillar-icon" style="background:linear-gradient(135deg, rgba(61,123,255,0.16), rgba(61,123,255,0.04)); box-shadow: 0 8px 22px -6px rgba(61,123,255,0.30) inset;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="#3D7BFF" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.5" cy="14.5" r="1.4" fill="#3D7BFF"/><circle cx="13" cy="14.5" r="1.4" fill="#3D7BFF" opacity="0.4"/><circle cx="17.5" cy="14.5" r="1.4" fill="#3D7BFF" opacity="0.2"/></svg>
+<!-- ─── BIG 3 ─── -->
+<section class="big3" id="features">
+  <div class="big3-inner">
+    <div class="big3-head reveal">
+      <h2>Everything you need.<br><em>Nothing you don't.</em></h2>
+    </div>
+    <div class="big3-grid">
+      <div class="big3-card reveal d1">
+        <div class="big3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#3D7BFF" stroke-width="2.2" stroke-linecap="round"/></svg>
         </div>
-        <h3>Today.</h3>
-        <p>One screen. Every dose, planned.</p>
-        <span class="tag"><span class="tdot" style="background:#3D7BFF;"></span>Daily home</span>
+        <h3>Logger.</h3>
+        <p>Tap your dose. Logged. That's it.</p>
       </div>
-
-      <div class="pillar reveal d2" style="--pillar-glow: radial-gradient(80% 60% at 100% 0%, rgba(31,143,102,0.10), transparent 60%);">
-        <div class="pillar-icon" style="background:linear-gradient(135deg, rgba(31,143,102,0.16), rgba(31,143,102,0.04)); box-shadow: 0 8px 22px -6px rgba(31,143,102,0.30) inset;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2.6" stroke="#1F8F66" stroke-width="1.8"/><circle cx="12" cy="11" r="3.4" stroke="#1F8F66" stroke-width="1.8"/><circle cx="12" cy="11" r="1.3" fill="#1F8F66"/><rect x="10.5" y="4.5" width="3" height="1.2" rx="0.6" fill="#1F8F66"/></svg>
-        </div>
-        <h3>Vial Scanner.</h3>
-        <p>Snap a label → see the rating before you reconstitute.</p>
-        <span class="tag"><span class="tdot" style="background:#1F8F66;"></span>Powered by AI vision</span>
-      </div>
-
-      <div class="pillar reveal d3" style="--pillar-glow: radial-gradient(80% 60% at 100% 0%, rgba(245,176,66,0.10), transparent 60%);">
-        <div class="pillar-icon" style="background:linear-gradient(135deg, rgba(245,176,66,0.18), rgba(245,176,66,0.04)); box-shadow: 0 8px 22px -6px rgba(245,176,66,0.30) inset;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E08234" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="#E08234" stroke-width="1.8" stroke-linecap="round"/><path d="M3.5 12A8.5 8.5 0 0112 3.5" stroke="#E08234" stroke-width="2.4" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Stack Optimizer.</h3>
-        <p>Score your stack. Get specific fixes.</p>
-        <span class="tag"><span class="tdot" style="background:#E08234;"></span>0–100 score</span>
-      </div>
-
-      <div class="pillar reveal d4" style="--pillar-glow: radial-gradient(80% 60% at 100% 0%, rgba(31,143,102,0.10), transparent 60%);">
-        <div class="pillar-icon" style="background:linear-gradient(135deg, rgba(31,143,102,0.16), rgba(31,143,102,0.04)); box-shadow: 0 8px 22px -6px rgba(31,143,102,0.30) inset;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="#1F8F66" stroke-width="1.8"/><path d="M8 8h8M8 12h5M8 16h3" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="16" r="2.2" fill="#1F8F66"/><path d="M16 16l0.7 0.7L18.3 15" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="big3-card reveal d2">
+        <div class="big3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="3" stroke="#3D7BFF" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h3" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <h3>Calculator.</h3>
-        <p>Reconstitution to the unit mark.</p>
-        <span class="tag"><span class="tdot" style="background:#1F8F66;"></span>Forward · Reverse · Stack</span>
+        <p>The math, done right. Every time.</p>
       </div>
-
-      <div class="pillar reveal d5" style="--pillar-glow: radial-gradient(80% 60% at 100% 0%, rgba(124,92,255,0.10), transparent 60%);">
-        <div class="pillar-icon" style="background:linear-gradient(135deg, rgba(124,92,255,0.16), rgba(124,92,255,0.04)); box-shadow: 0 8px 22px -6px rgba(124,92,255,0.30) inset;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 4a2 2 0 012-2h10a2 2 0 012 2v16l-7-3-7 3V4z" stroke="#7C5CFF" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8h6M9 12h4" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div class="big3-card reveal d3">
+        <div class="big3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 18l5-5 4 4 7-9" stroke="#3D7BFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>50+ peptides.</h3>
-        <p>Dosing, timing, stacks. Built in.</p>
-        <span class="tag"><span class="tdot" style="background:#7C5CFF;"></span>Library &amp; stacks</span>
+        <h3>Tracker.</h3>
+        <p>Every dose. Every vial. One screen.</p>
       </div>
-
-      <div class="pillar reveal d6" style="--pillar-glow: radial-gradient(80% 60% at 100% 0%, rgba(245,176,66,0.10), transparent 60%);">
-        <div class="pillar-icon" style="background:linear-gradient(135deg, rgba(245,176,66,0.18), rgba(245,176,66,0.04)); box-shadow: 0 8px 22px -6px rgba(245,176,66,0.30) inset;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l1.9 4.6L19 8l-3.6 3.5.9 5L12 14l-4.3 2.5.9-5L5 8l5.1-.9L12 2.5z" stroke="#E08234" stroke-width="1.8" stroke-linejoin="round"/><circle cx="19" cy="5" r="1.6" fill="#E08234"/><circle cx="6" cy="20" r="1.2" fill="#E08234" opacity="0.6"/></svg>
+      <div class="big3-card reveal d1">
+        <div class="big3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#3D7BFF" stroke-width="2"/><circle cx="12" cy="12.5" r="3.5" stroke="#3D7BFF" stroke-width="2"/><path d="M8 6l1.5-2h5L16 6" stroke="#3D7BFF" stroke-width="2" stroke-linejoin="round"/></svg>
         </div>
-        <h3>AI Coach.</h3>
-        <p>Knows <em style="font-family:var(--serif);font-style:italic;color:var(--ink);">your</em> stack. Not generic.</p>
-        <span class="tag"><span class="tdot" style="background:#E08234;"></span>Powered by Claude</span>
+        <h3>Vial scanner.</h3>
+        <p>Point your camera. Get a live safety score.</p>
+      </div>
+      <div class="big3-card reveal d2">
+        <div class="big3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 014 4v3a4 4 0 11-8 0V7a4 4 0 014-4z" stroke="#3D7BFF" stroke-width="2"/><path d="M5 21c1-3 4-5 7-5s6 2 7 5" stroke="#3D7BFF" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>AI coach.</h3>
+        <p>Personal guide. Knows your goals.</p>
+      </div>
+      <div class="big3-card reveal d3">
+        <div class="big3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 17l5-5 4 4 8-9" stroke="#3D7BFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h6v6" stroke="#3D7BFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Stack optimizer.</h3>
+        <p>AI grades your stack. Tells you what to fix.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── SHOWCASE 1 — TODAY ─── -->
-<section class="showcase" id="today">
-  <div class="section-inner showcase-inner">
-    <div class="showcase-text reveal">
-      <span class="section-eyebrow"><span class="pip"></span>Today screen</span>
-      <h3>Open the app.<br>Know <em>exactly</em> what to do.</h3>
-      <p>No hunting through notes. No guessing what's next. Your active protocol, dose countdown, and quick-log are right there the moment you launch.</p>
-      <ul class="showcase-bullets">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(61,123,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Real-time countdown</b> to your next dose, with snooze and reschedule.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(61,123,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>One-tap logging</b> with automatic injection site rotation.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(61,123,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Multi-peptide stacks</b> — log every dose in your stack at once.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(61,123,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#3D7BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Streak counter</b> &amp; adherence percentage tracked automatically.</span></li>
-      </ul>
+<!-- ─── SHOWCASE — three phones ─── -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <div class="showcase-head reveal">
+      <h2>The whole app.<br><em>In your pocket.</em></h2>
+      <p>Made for how peptide users actually work.</p>
     </div>
-    <div class="showcase-phone reveal d2">
-      <div class="phone">
-        <div class="phone-screen">
-          <img src="img/today.png" alt="Today screen showing active protocols and stack cards">
+    <div class="showcase-row">
+      <div class="showcase-cell tilt-l reveal d1">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <img src="img/today.png" alt="Today screen">
+            </div>
+          </div>
         </div>
+        <h4>Today</h4>
+        <p>Open. Tap. Logged.</p>
+      </div>
+      <div class="showcase-cell reveal d2">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <img src="img/calc.png" alt="Calculator screen">
+            </div>
+          </div>
+        </div>
+        <h4>Calc</h4>
+        <p>Math, done for you.</p>
+      </div>
+      <div class="showcase-cell tilt-r reveal d3">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <img src="img/coach.png" alt="AI Coach screen">
+            </div>
+          </div>
+        </div>
+        <h4>Coach</h4>
+        <p>AI in your pocket.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── SHOWCASE — VIAL SCANNER ─── -->
-<section class="showcase alt" id="scanner">
-  <div class="section-inner showcase-inner reverse">
-    <div class="showcase-text reveal">
-      <span class="section-eyebrow"><span class="pip"></span>Vial Scanner</span>
-      <h3>Snap a vial.<br>See if it's <em>actually safe.</em></h3>
-      <p>Point your camera at any peptide vial. Pinned reads the label with on-device AI vision, then cross-references the vendor against <strong>270+ independently rated suppliers</strong> from Finnrick, Janoshik, and PeptideScores — and shows you the purity grade <em style="font-family:var(--serif);font-style:italic;color:var(--ink);">before</em> you reconstitute.</p>
-      <ul class="showcase-bullets">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>AI label reading</b> extracts vendor, peptide, lot, and expiry from a single photo.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Live trust ratings</b> aggregated from <b>3 independent peptide testing services</b>.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Letter-grade scoring</b> (A+ → F) plus avg purity %, test count, last-batch lot.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Just curious?</b> Scan to check the rating — closing the screen never adds it to inventory.</span></li>
-      </ul>
-    </div>
-    <div class="showcase-phone reveal d2">
-      <div class="phone">
-        <div class="phone-screen">
-          <img src="img/scanner.png" alt="Vial scanner showing camera frame with vendor trust ratings and A+ grade match"
-               onerror="this.parentElement.innerHTML='<div style=\&quot;width:100%;height:100%;background:linear-gradient(180deg,#0A0A0C,#1A1A20);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;color:#fff;font-family:Inter,sans-serif;text-align:center;gap:14px;\&quot;><div style=\&quot;width:56px;height:56px;border-radius:14px;background:rgba(31,143,102,0.20);display:flex;align-items:center;justify-content:center;border:2px solid #1F8F66;\&quot;><svg width=\&quot;28\&quot; height=\&quot;28\&quot; viewBox=\&quot;0 0 24 24\&quot; fill=\&quot;none\&quot;><rect x=\&quot;6\&quot; y=\&quot;3\&quot; width=\&quot;12\&quot; height=\&quot;18\&quot; rx=\&quot;2.6\&quot; stroke=\&quot;#fff\&quot; stroke-width=\&quot;1.8\&quot;/><circle cx=\&quot;12\&quot; cy=\&quot;11\&quot; r=\&quot;3.2\&quot; stroke=\&quot;#fff\&quot; stroke-width=\&quot;1.8\&quot;/><circle cx=\&quot;12\&quot; cy=\&quot;11\&quot; r=\&quot;1.2\&quot; fill=\&quot;#fff\&quot;/></svg></div><div style=\&quot;font-size:16px;font-weight:700;letter-spacing:-0.02em;\&quot;>Match found</div><div style=\&quot;font-size:22px;font-weight:800;letter-spacing:-0.02em;\&quot;>Trusted Peptide</div><div style=\&quot;display:flex;align-items:center;gap:8px;font-size:13px;opacity:0.85;\&quot;><span style=\&quot;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:2.5px solid #1F8F66;font-weight:800;color:#1F8F66;background:#fff;font-size:13px;\&quot;>A+</span><span>10.0/10 confidence</span></div><div style=\&quot;font-size:11px;opacity:0.7;margin-top:10px;line-height:1.4;\&quot;>Avg purity 100% · 1 test<br>Sources: Finnrick</div></div>'">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SHOWCASE — STACK OPTIMIZER ─── -->
-<section class="showcase" id="optimizer">
-  <div class="section-inner showcase-inner">
-    <div class="showcase-text reveal">
-      <span class="section-eyebrow"><span class="pip"></span>AI Stack Optimizer</span>
-      <h3>Score your stack.<br>Get the <em>exact fixes.</em></h3>
-      <p>Pinned grades your full protocol on <strong>seven dimensions</strong> — goal alignment, synergy, receptor conflicts, dose timing, spacing, site rotation, and vendor confidence. Every flagged issue comes with a specific, ranked fix.</p>
-      <ul class="showcase-bullets">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.12)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>0–100 score</b> with a breakdown bar for each of the 7 scoring dimensions.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.12)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Conflict detection:</b> ghrelin-receptor desensitization, GLP-1 stacking, GHRH redundancy.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.12)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>How to optimize:</b> top-3 medal-ranked actions with point gains and dose recommendations.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.12)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>24-hour timeline</b> visualizes peak windows and shows your optimized schedule next to your current one.</span></li>
-      </ul>
-    </div>
-    <div class="showcase-phone reveal d2">
-      <div class="phone">
-        <div class="phone-screen">
-          <img src="img/optimizer.png" alt="Stack Optimizer showing score 87/100 with breakdown by dimension and recommendations"
-               onerror="this.parentElement.innerHTML='<div style=\&quot;width:100%;height:100%;background:#FAFAFB;display:flex;flex-direction:column;padding:32px 22px 22px;color:#0A0A0C;font-family:Inter,sans-serif;gap:14px;box-sizing:border-box;\&quot;><div style=\&quot;font-size:11px;color:#E08234;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;\&quot;>Stack Optimizer</div><div style=\&quot;display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #ECECEF;\&quot;><div style=\&quot;width:64px;height:64px;border-radius:50%;border:4px solid #1F8F66;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#1F8F66;background:#fff;\&quot;>87</div><div><div style=\&quot;font-size:11px;color:#6B6B75;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;\&quot;>Score · Strong stack</div><div style=\&quot;font-size:14px;font-weight:600;margin-top:2px;\&quot;>3 fixes available</div></div></div><div style=\&quot;display:flex;flex-direction:column;gap:10px;font-size:12px;\&quot;><div><div style=\&quot;display:flex;justify-content:space-between;margin-bottom:4px;\&quot;><span style=\&quot;font-weight:600;\&quot;>Goal alignment</span><span style=\&quot;font-weight:700;color:#1F8F66;\&quot;>22 / 25</span></div><div style=\&quot;height:5px;background:#ECECEF;border-radius:3px;\&quot;><div style=\&quot;width:88%;height:100%;background:#1F8F66;border-radius:3px;\&quot;></div></div></div><div><div style=\&quot;display:flex;justify-content:space-between;margin-bottom:4px;\&quot;><span style=\&quot;font-weight:600;\&quot;>Synergy</span><span style=\&quot;font-weight:700;color:#1F8F66;\&quot;>10 / 10</span></div><div style=\&quot;height:5px;background:#ECECEF;border-radius:3px;\&quot;><div style=\&quot;width:100%;height:100%;background:#1F8F66;border-radius:3px;\&quot;></div></div></div><div><div style=\&quot;display:flex;justify-content:space-between;margin-bottom:4px;\&quot;><span style=\&quot;font-weight:600;\&quot;>Conflict-free</span><span style=\&quot;font-weight:700;color:#1F8F66;\&quot;>25 / 25</span></div><div style=\&quot;height:5px;background:#ECECEF;border-radius:3px;\&quot;><div style=\&quot;width:100%;height:100%;background:#1F8F66;border-radius:3px;\&quot;></div></div></div><div><div style=\&quot;display:flex;justify-content:space-between;margin-bottom:4px;\&quot;><span style=\&quot;font-weight:600;\&quot;>Vendor confidence</span><span style=\&quot;font-weight:700;color:#E08234;\&quot;>8 / 10</span></div><div style=\&quot;height:5px;background:#ECECEF;border-radius:3px;\&quot;><div style=\&quot;width:80%;height:100%;background:#E08234;border-radius:3px;\&quot;></div></div></div></div></div>'">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SHOWCASE 2 — CALCULATOR ─── -->
-<section class="showcase alt" id="calculator">
-  <div class="section-inner showcase-inner reverse">
-    <div class="showcase-text reveal">
-      <span class="section-eyebrow"><span class="pip"></span>Calculator</span>
-      <h3>Reconstitution,<br><em>done right.</em></h3>
-      <p>Stop calculating BAC water by hand or eyeballing the syringe. Pinned does the math precisely — for a single peptide or a full multi-peptide stack — and shows you exactly which line on the syringe to draw to.</p>
-      <ul class="showcase-bullets">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Forward mode:</b> enter your dose → get exact syringe units.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Reverse mode:</b> find the optimal BAC water volume for your vial.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Stack / Blend mode</b> for multi-peptide protocols in a single syringe.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(31,143,102,0.10)"/><path d="M5 9l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Guided first-mix</b> walkthrough with sterile-technique reminders.</span></li>
-      </ul>
-    </div>
-    <div class="showcase-phone reveal d2">
-      <div class="phone">
-        <div class="phone-screen">
-          <img src="img/calc.png" alt="Calculator screen with reconstitution math and visual syringe">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SHOWCASE 3 — LIBRARY ─── -->
-<section class="showcase" id="library">
-  <div class="section-inner showcase-inner">
-    <div class="showcase-text reveal">
-      <span class="section-eyebrow"><span class="pip"></span>Peptide library</span>
-      <h3>Every peptide.<br><em>Every protocol.</em></h3>
-      <p>A reference built into the app. From mechanism of action to cycling strategy — plus curated multi-peptide stacks you can load into the calculator with a single tap.</p>
-      <ul class="showcase-bullets">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(124,92,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>50+ peptides</b> with research summaries, half-lives, and dosing ranges.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(124,92,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Curated stacks:</b> Wolverine, Titan, Cortex, Sleep &amp; Repair, more.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(124,92,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Filter by goal:</b> recovery, growth, cognitive, sleep, longevity.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(124,92,255,0.10)"/><path d="M5 9l3 3 5-6" stroke="#7C5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Tap-to-load</b> any stack into the Calculator instantly.</span></li>
-      </ul>
-    </div>
-    <div class="showcase-phone reveal d2">
-      <div class="phone">
-        <div class="phone-screen">
-          <img src="img/library.png" alt="Peptide library with 42+ peptides and category filters">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── COACH (DARK MOMENT) ─── -->
+<!-- ─── COACH ─── -->
 <section class="coach" id="coach">
   <div class="coach-inner">
-    <div class="reveal">
-      <span class="section-eyebrow"><span class="pip"></span>AI Coach · Powered by Claude</span>
-      <h2>Meet your<br><em>Pinned Coach.</em></h2>
-      <p class="lede">Generic peptide advice is everywhere. <strong style="color:#fff;">Yours</strong> isn't. Pinned Coach knows your protocols, dose history, and vials — so every answer is grounded in what you're actually running.</p>
-      <div class="coach-feats">
-        <div class="coach-feat">
-          <div class="coach-feat-ic">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#8FB1FF" stroke-width="1.6"/><circle cx="8" cy="8" r="2" fill="#8FB1FF"/></svg>
-          </div>
-          <div>
-            <div class="t">Knows your stack</div>
-            <div class="d">Pulls from your real protocols, doses, and vials — not generic info from the internet.</div>
-          </div>
-        </div>
-        <div class="coach-feat">
-          <div class="coach-feat-ic">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L9.85 5.4 14 6 11 9 11.7 13.2 8 11 4.3 13.2 5 9 2 6 6.15 5.4 8 1.5z" stroke="#8FB1FF" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div class="t">Research-grounded</div>
-            <div class="d">Mechanisms, synergies, cycling strategies, timing — sourced from current peptide literature.</div>
-          </div>
-        </div>
-        <div class="coach-feat">
-          <div class="coach-feat-ic">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.4 4.9 5.4.8-3.9 3.8 1 5.4L8 13.4 3.1 15.9l1-5.4-3.9-3.8 5.4-.8L8 1z" stroke="#8FB1FF" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div class="t">Always available</div>
-            <div class="d">Timing, sterile technique, stacking, side effects — answered instantly, any hour.</div>
-          </div>
-        </div>
-      </div>
+    <div class="coach-eyebrow reveal">
+      <span class="pip"></span> AI Coach
     </div>
-
-    <div class="coach-chat reveal d2">
-      <div class="coach-chat-head">
-        <div class="coach-avatar">✦</div>
-        <div>
-          <div class="coach-chat-name">Pinned Coach</div>
-          <div class="coach-chat-status">● Online · knows your stack</div>
-        </div>
-      </div>
-
-      <div class="bubble user">How should I time my BPC-157 and Ipamorelin today?</div>
-
-      <div class="bubble ai">
-        Good question — these two complement each other nicely. Based on your <b>Wolverine</b> stack:<br><br>
-        <b>BPC-157 (250 mcg)</b> — flexible timing. Morning SubQ near your target area works well; no fasting required.<br><br>
-        <b>Ipamorelin (300 mcg)</b> — pre-bed, ideally 90 min after your last meal. This maximizes the GH pulse during your first sleep cycle.
-      </div>
-
-      <div class="bubble user">Can I add TB-500 to this?</div>
-
-      <div style="display:flex; gap:8px; align-items:center; margin-left: 4px; margin-top: 4px;">
-        <div class="coach-avatar" style="width:24px;height:24px;font-size:9px;">✦</div>
-        <div class="bubble ai" style="margin-bottom:0;">
-          <div class="typing"><span></span><span></span><span></span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SHOWCASE 4 — TRACKER ─── -->
-<section class="showcase alt" id="tracker">
-  <div class="section-inner showcase-inner reverse">
-    <div class="showcase-text reveal">
-      <span class="section-eyebrow"><span class="pip"></span>Tracker &amp; inventory</span>
-      <h3>Complete visibility,<br><em>zero spreadsheets.</em></h3>
-      <p>Every dose logged. Every vial tracked. Stability countdowns, adherence percentages, streak history — exactly what you need to actually run a protocol like a professional.</p>
-      <ul class="showcase-bullets">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.10)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Full dose history</b> grouped by day, with site, peptide, and time.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.10)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Vial inventory</b> with 28-day stability countdown &amp; doses remaining.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.10)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Body-map</b> for site rotation across abdomen, deltoid, glute, thigh.</span></li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="rgba(245,176,66,0.10)"/><path d="M5 9l3 3 5-6" stroke="#E08234" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Streak reminders</b> at 7:30 PM if you haven't logged today.</span></li>
-      </ul>
-    </div>
-    <div class="showcase-phone reveal d2">
-      <div class="phone">
-        <div class="phone-screen">
-          <img src="img/tracker.png" alt="Tracker screen with adherence stats and full dose history">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── BIG STATS ─── -->
-<section class="stats">
-  <div class="stats-inner">
-    <div class="stat reveal d1">
-      <div class="num">50<em>+</em></div>
-      <div class="lbl">Peptides in the library</div>
-    </div>
-    <div class="stat reveal d2">
-      <div class="num">1.2<em>M</em></div>
-      <div class="lbl">Doses calculated to date</div>
-    </div>
-    <div class="stat reveal d3">
-      <div class="num">28<em>d</em></div>
-      <div class="lbl">Stability tracked per vial</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── TESTIMONIALS ─── -->
-<section class="testimonials">
-  <div class="section-inner">
-    <span class="section-eyebrow reveal"><span class="pip"></span>Loved by users</span>
-    <h2 class="section-title reveal">Built for people who<br><em>actually</em> run protocols.</h2>
-    <p class="section-sub reveal">Early access users have logged tens of thousands of doses. Here's what they're saying.</p>
-
-    <div class="test-grid">
-      <div class="test-card reveal d1">
-        <blockquote>Replaced three apps and a spreadsheet on day one. The reverse calculator alone is worth it — finally know exactly how much BAC water to add without doing it on paper.</blockquote>
-        <div class="test-author">
-          <div class="av">JL</div>
-          <div class="meta">
-            <div class="n">James L.</div>
-            <div class="r">Running Wolverine · 14-day streak</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="test-card reveal d2">
-        <blockquote>The Coach actually knows what I'm running. Asked it about timing my Ipa around training, and it referenced the exact doses I'd logged that week. No other tool does this.</blockquote>
-        <div class="test-author">
-          <div class="av" style="background:linear-gradient(135deg,#1F8F66,#3D7BFF);">MK</div>
-          <div class="meta">
-            <div class="n">Mira K.</div>
-            <div class="r">Running Lean Edge · 60+ doses logged</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="test-card reveal d3">
-        <blockquote>The vial countdown is the killer feature for me. I used to lose track of when I mixed something — now I get a heads-up before stability drops. Tiny detail, huge difference.</blockquote>
-        <div class="test-author">
-          <div class="av" style="background:linear-gradient(135deg,#E08234,#7C5CFF);">TR</div>
-          <div class="meta">
-            <div class="n">Tom R.</div>
-            <div class="r">5 active vials · 100% adherence</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FAQ ─── -->
-<section class="faq" id="faq">
-  <div class="faq-inner">
-    <h2 class="reveal">Common <em>questions</em>.</h2>
-    <p class="lede reveal">Short answers. If you have something else, email <a href="mailto:hello@pinned.fit" style="color:var(--blue); font-weight:600;">hello@pinned.fit</a>.</p>
-
-    <div class="faq-list">
-      <details class="reveal d1">
-        <summary>Is Pinned free?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>Yes. Core features — tracking, calculator, library, vial inventory — are completely free, with no subscription. AI Coach has a generous free tier with optional upgrade for unlimited usage.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>Is it on iOS and Android?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>Both. Native App Store and Play Store builds are in private beta — join the waitlist to get early access.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>Is my data private?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>Yes. Your protocols, dose history, and vials are stored in your account — encrypted in transit and at rest. We never sell or share your data with third parties. You can export everything as JSON at any time.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>How accurate is the calculator?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>The reconstitution math is exact: dose ÷ concentration, with concentration derived from peptide mass and BAC water volume. We then snap to the nearest U-100 unit mark for the syringe size you've selected. Forward and reverse modes use the same formula in different directions — there's no fudge factor.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>Does the AI Coach give medical advice?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>No. Pinned Coach is an educational tool only. It surfaces research-backed information about your stack, but it can't replace a qualified healthcare provider. Always consult a professional before starting, modifying, or stopping any peptide.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>How does the vial scanner work?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>Tap the camera button, point at any vial label, and tap Capture. Pinned uses on-device AI vision to extract the vendor, peptide, lot number, and expiry, then cross-references the vendor against ratings aggregated from <strong>Finnrick, Janoshik, and PeptideScores</strong> — three independent peptide testing services. You see a letter grade (A+ through F), avg purity %, and last-batch lot before deciding whether to add it to inventory or just close out.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>What does the Stack Optimizer score?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>Seven dimensions out of 100 total points: goal alignment, synergy, conflict-free (receptor desensitization, GLP-1 stacking, GHRH redundancy), dose timing vs each peptide's pharmacokinetics, spacing, injection-site rotation, and vendor confidence from your scanned vials. Every flagged issue comes with a specific, ranked fix and an estimated point gain.</p>
-      </details>
-      <details class="reveal d1">
-        <summary>Can I import my existing protocol?
-          <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#0A0A0C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <p>Yes. Pick from our pre-built stacks, customize one, or build from scratch in the Calculator. Setup takes under 2 minutes and the Coach can help you migrate from a spreadsheet if you have one.</p>
-      </details>
-    </div>
+    <h2 class="reveal">Ask anything.<br><em>It knows your stack.</em></h2>
+    <p class="reveal d2">Trained on the research. Tuned to your doses.</p>
   </div>
 </section>
 
 <!-- ─── FINAL CTA ─── -->
 <section class="final" id="download">
   <div class="final-inner">
-    <span class="section-eyebrow reveal" style="justify-content:center;display:inline-flex;"><span class="pip"></span>Free · No subscription</span>
-    <h2 class="reveal">Run your stack like<br><em>a professional.</em></h2>
-    <p class="reveal">Set up your first protocol in under 2 minutes. Available on iPhone and Android.</p>
+    <h2 class="reveal">Get <em>Pinned.</em></h2>
+    <p class="reveal d1">Free. iOS &amp; Android. 60-second setup.</p>
     <div class="cta-row reveal d2">
       <a href="#" class="store-btn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -1353,57 +755,30 @@
     <div class="final-foot reveal d3">
       <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Free forever</span>
       <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Works offline</span>
-      <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Private &amp; encrypted</span>
+      <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="#1F8F66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Private</span>
     </div>
   </div>
 </section>
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <div class="logo">
-        <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
-          <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#fff"/>
-        </svg>
-        <span class="nav-wordmark">pinned</span>
-      </div>
-      <p>The peptide tracking app for serious users. Designed around real workflows, from first reconstitution to a year of compliance.</p>
-    </div>
-    <div class="foot-col">
-      <h4>Product</h4>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#scanner">Vial Scanner</a></li>
-        <li><a href="#optimizer">Stack Optimizer</a></li>
-        <li><a href="#calculator">Calculator</a></li>
-        <li><a href="#library">Library</a></li>
-        <li><a href="#coach">AI Coach</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="mailto:hello@pinned.fit">Contact</a></li>
-        <li><a href="#download">Download</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms of Use</a></li>
-        <li><a href="/disclaimer">Disclaimer</a></li>
-      </ul>
+  <div class="foot-inner">
+    <a href="/" class="foot-brand">
+      <svg class="nav-glyph" viewBox="0 0 14 24" fill="none">
+        <path d="M 0 0 H 14 V 3 H 9.5 C 9.5 5 11 4.5 11 6 V 17 L 7 24 L 3 17 V 6 C 3 4.5 4.5 5 4.5 3 H 0 Z" fill="#fff"/>
+      </svg>
+      <span class="nav-wordmark">pinned</span>
+    </a>
+    <div class="foot-links">
+      <a href="/howitworks">How it works</a>
+      <a href="/faq">FAQ</a>
+      <a href="mailto:hello@pinned.fit">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
     </div>
   </div>
-  <div class="disclaimer-strip">
-    Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide.
-  </div>
-  <div class="foot-bottom">
-    <div>© 2026 Pinned. All rights reserved.</div>
-    <div>Made with care for the peptide community.</div>
+  <div class="foot-disclaimer">
+    Pinned is a personal tracking tool — nothing in this app or website constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before using any peptide. © 2026 Pinned.
   </div>
 </footer>
 
@@ -1418,15 +793,6 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  // Subtle parallax on hero phone
-  const heroPhone = document.querySelector('.hero-phone-wrap');
-  if (heroPhone) {
-    window.addEventListener('scroll', () => {
-      const y = Math.min(window.scrollY, 800);
-      heroPhone.style.setProperty('--py', `${y * 0.05}px`);
-    }, { passive: true });
-  }
 </script>
 
 </body>
