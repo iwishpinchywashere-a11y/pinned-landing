@@ -173,64 +173,80 @@
 <article class="doc">
 
   <section>
-    <h2>The short version</h2>
-    <p>Pinned is a tracking tool you control. We collect the bare minimum to make the app work and keep your account secure. Your stack, doses, and vial data live on your device first. Anything synced to our servers is encrypted in transit and at rest.</p>
-    <p>We don't sell your data. We don't run ads. We don't share what you log with anyone outside of Pinned.</p>
+    <h2>Plain English first</h2>
+    <p>You came here to track peptides, not to feed an ad network. Pinned is built so the only person profiting from your data is you. We hold the minimum amount needed to keep the app running, and we treat the rest like it isn't ours — because it isn't.</p>
+    <p>Nothing in here is going to surprise you. If something does, that's a bug — email us and we'll explain or fix it.</p>
   </section>
 
   <section>
-    <h2>What we collect</h2>
-    <p><strong>Account info:</strong> your email address and password hash (handled by Supabase Auth — we never see your raw password).</p>
-    <p><strong>Profile info:</strong> anything you optionally type into Profile — name, age, sex, height, weight, goals. All optional. Stored encrypted on our servers.</p>
-    <p><strong>Tracking data:</strong> peptides, doses, vials, schedules, and dose history you save. Stored locally first and synced to our servers when you're logged in.</p>
-    <p><strong>Coach conversations:</strong> the text of messages you send to Coach and the responses, so the chat persists across sessions. Sent to Anthropic's API for processing.</p>
-    <p><strong>Payment info:</strong> handled by Stripe (web) or Apple/Google (mobile). We see your subscription status; we never see your card details.</p>
-    <p><strong>Crash + usage logs:</strong> basic diagnostics (app version, device type, error stack traces) to keep the app stable. No personal data attached.</p>
+    <h2>What lives on your phone</h2>
+    <p>Your stack, your schedule, your dose log, your inventory, your Coach chats, and your Today screen state all save locally first. The service worker keeps a cached copy of the app shell so you can open Pinned on the subway, on a plane, or with two bars of LTE and everything still loads.</p>
+    <p>If you never sign in, nothing ever leaves your device. Guest mode is genuinely guest mode.</p>
   </section>
 
   <section>
-    <h2>How we use it</h2>
-    <p>To run the app for you: render your Today screen, surface your inventory, answer Coach questions about your stack.</p>
-    <p>To improve the app: bug reports, version-to-version stability tracking, anonymous feature usage so we know what to build next.</p>
-    <p>To process payments: forwarding subscription events to Stripe or the app store.</p>
-    <p>We do not use your data to train models. Your Coach conversations are not used by us or Anthropic for training under our API contract.</p>
+    <h2>What we hold when you sign in</h2>
+    <p>The email you signed up with. Auth is handled by Supabase, which stores a salted hash of your password — we cannot read it, and neither can they.</p>
+    <p>Whatever you choose to type into Profile (age, weight, goals, etc.). All optional. Encrypted at rest.</p>
+    <p>Your tracking data: vials, peptides, schedules, dose history, body-region map. Encrypted at rest.</p>
+    <p>Coach transcripts so the conversation persists between sessions.</p>
+    <p>Subscription state from Stripe (web) or Apple / Google (mobile) — basically a flag telling us whether you're on Pro.</p>
+    <p>Anonymous diagnostics: app version, device class, error stack traces. No identifiers, no peptide data.</p>
   </section>
 
   <section>
-    <h2>Who we share it with</h2>
-    <p><strong>Supabase</strong> (our auth and database provider) — stores your encrypted account and tracking data.</p>
-    <p><strong>Anthropic</strong> (the AI behind Coach) — receives the text of your Coach messages so it can generate a response. Anthropic does not retain or train on this data per our API agreement.</p>
-    <p><strong>Stripe / Apple / Google</strong> — handle payments. They see what they need to charge you; we see only the subscription status.</p>
-    <p><strong>Nobody else.</strong> Not advertisers, not data brokers, not analytics resellers.</p>
+    <h2>What we never collect</h2>
+    <p>Your real name (unless you put it in Profile).</p>
+    <p>Your address, phone number, or location.</p>
+    <p>Your payment card details — those go directly to Stripe / Apple / Google.</p>
+    <p>Your contacts, photos, or anything else outside the app.</p>
+    <p>Cross-app tracking IDs, advertising IDs, or third-party SDKs that vacuum data in the background.</p>
   </section>
 
   <section>
-    <h2>Your rights</h2>
-    <p><strong>Export:</strong> hit Export in your Profile to download a JSON file of everything you've ever logged.</p>
-    <p><strong>Delete:</strong> hit Delete account in Profile — your account, profile, doses, vials, schedules, and Coach history are removed from our servers within 7 days.</p>
-    <p><strong>Correct:</strong> edit any field at any time. Nothing is locked.</p>
-    <p>If you're in the EU/UK/California and want to exercise a specific GDPR / UK GDPR / CCPA right (access, portability, restriction, etc.), email <a href="mailto:hello@emberventures.io">hello@emberventures.io</a> and we'll respond within 30 days.</p>
+    <h2>Who touches the data besides you</h2>
+    <p><strong>Supabase</strong> — the database that holds your account and synced tracking data. Encrypted at rest, isolated by row-level security.</p>
+    <p><strong>Anthropic</strong> — sees the text of Coach messages so Claude can reply. Per our API contract, your messages are not retained beyond the response and are not used to train models.</p>
+    <p><strong>Stripe / Apple / Google</strong> — process subscription payments. They see what they need to charge you. We only see "Pro: yes/no".</p>
+    <p>That's the whole list. No analytics resellers, no ad networks, no data brokers.</p>
   </section>
 
   <section>
-    <h2>Security</h2>
-    <p>TLS in transit. AES-256 at rest. Auth tokens scoped per session and rotated. Service worker caches the app shell locally so most of Pinned works without network access.</p>
-    <p>No system is perfectly secure. If we ever experience a breach affecting your data, we'll notify you by email within 72 hours of confirming it.</p>
+    <h2>Why we hold it</h2>
+    <p>To run the app: render Today, sync your stack across devices, let Coach answer questions in context.</p>
+    <p>To bill correctly: confirm Pro status with the payment processor.</p>
+    <p>To find bugs: stack traces help us fix crashes you'd otherwise hit twice.</p>
+    <p>We don't use your data to train models. We don't profile you. We don't build behavioral segments.</p>
   </section>
 
   <section>
-    <h2>Kids</h2>
-    <p>Pinned is not intended for anyone under 18. We don't knowingly collect data from minors. If you believe a minor has used the app, email <a href="mailto:hello@emberventures.io">hello@emberventures.io</a> and we'll remove the account.</p>
+    <h2>Your moves</h2>
+    <p><strong>Export</strong> — Profile → Export Data drops everything you've logged into a JSON file. Yours. Take it anywhere.</p>
+    <p><strong>Delete</strong> — Profile → Delete account wipes your account, doses, vials, schedules, and Coach history from our servers within 7 days.</p>
+    <p><strong>Edit</strong> — every profile field is editable any time. Nothing is locked once entered.</p>
+    <p>GDPR / UK GDPR / CCPA specific requests (access, portability, restriction, objection): email <a href="mailto:hello@emberventures.io">hello@emberventures.io</a>. We'll respond within 30 days.</p>
   </section>
 
   <section>
-    <h2>Changes</h2>
-    <p>We'll update this policy if our data practices change. Material updates get a notice in the app and an email to your account address.</p>
+    <h2>How it's protected</h2>
+    <p>TLS 1.3 for everything in transit. AES-256 at rest. Auth tokens rotate per session.</p>
+    <p>Backups are encrypted and held for 30 days, then deleted.</p>
+    <p>No system is bulletproof. If we ever confirm a breach affecting your data, we will email you within 72 hours and post a notice in the app.</p>
   </section>
 
   <section>
-    <h2>Contact</h2>
-    <p>Questions about privacy: <a href="mailto:hello@emberventures.io">hello@emberventures.io</a>. We respond to every email.</p>
+    <h2>Adults only</h2>
+    <p>Pinned is for users 18 and over. We don't market to minors and we don't knowingly collect data from anyone under 18. If you believe a minor created an account, email <a href="mailto:hello@emberventures.io">hello@emberventures.io</a> and we will remove it.</p>
+  </section>
+
+  <section>
+    <h2>Updates to this policy</h2>
+    <p>If we change something material, you'll see an in-app banner and an email at your account address. Cosmetic edits (typos, clarifications) just get a new "Last updated" date.</p>
+  </section>
+
+  <section>
+    <h2>Reach us</h2>
+    <p><a href="mailto:hello@emberventures.io">hello@emberventures.io</a> — privacy questions, deletion requests, anything else. A real human reads every email.</p>
   </section>
 
 </article>
